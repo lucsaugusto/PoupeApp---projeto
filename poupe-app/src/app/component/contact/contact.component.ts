@@ -13,7 +13,7 @@ export class ContactComponent implements OnInit {
   private tel: string;
   private msg: any;
   private filtro: any = /^([a-zA-zà-úÀ-Ú]|\s+)+$/;
-  private num: any = /([0-9])/;
+  private num: any = /^[0-9]+$/;
   private _msgErroN: string = null;
   private _msgErroS: string = null;
   private _msgErroE: string = null;

@@ -1,3 +1,6 @@
 .navColor{
-    background-color: rgb(254, 179, 78)
+    background-color: rgb(254, 179, 78);
+    float: fixed;
+    top: 0;
+    width: 100%;
 }
