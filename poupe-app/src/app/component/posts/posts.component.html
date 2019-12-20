@@ -1,0 +1,85 @@
+<br/>
+<br/>
+<br/>
+<div class="container col-4 mt-5">
+    <div class="input-group mb-5">
+        <input id="txtPostId" type="number" [(ngModel)]="idPostagem" class="form-control" placeholder="Digite o id"
+            aria-label="Recipient's username" aria-describedby="button-addon2">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary bg-dark text-light" type="button" id="button-addon2"
+                (click)="btnClickId()">Consultar</button>
+        </div>
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary bg-dark text-light" type="button" id="button-addon3"
+                (click)="btnClickAll()">Consultar todos</button>
+        </div>
+    </div>
+</div>
+
+<div class="container col-10 mb-5 " *ngIf="showAll == true">
+    <div class="card border-secondary m-3" style="max-width: 80rem;" *ngFor="let post of posts">
+        <img class="card-img-top" src="{{post.linkimg}}" alt="Card image cap">
+        <div class="card-header text-dark bg-secondary">
+            <h2 class="font-weight-bold text-light">Post {{post.idPostagem}}</h2>
+        </div>
+        <div class="card-body text-info">
+            <h5 class="card-title text-dark">Id Postagem: <span class="text-secondary">{{post.idPostagem}}</span></h5>
+            <h5 class="card-title text-dark">Título: <span class="text-secondary">{{post.titulo}}</span></h5>
+            <h5 class="card-title text-dark">Texto: <span class="text-secondary">{{post.texto}}</span></h5>
+            <h5 class="card-title text-dark">Link Img: <span class="text-secondary">{{post.linkimg}}</span></h5>
+            <h5 class="card-title text-dark">Data de Inclusão: <span
+            class="text-secondary">{{post.dataInclusao}}</span></h5>
+        </div>
+    </div>
+</div>
+
+<div class="container col-10 mb-5" *ngIf="showId == true">
+    <div class="card border-secondary m-3" style="max-width: 80rem;">
+        <img class="card-img-top" src="{{post.linkimg}}" alt="Card image cap">
+        <div class="card-header text-dark bg-secondary">
+            <h2 class="font-weight-bold text-light">Post {{post.idPostagem}}</h2>
+        </div>
+        <div class="card-body text-info">
+            <h5 class="card-title text-dark">Id Postagem: <span class="text-secondary">{{post.idPostagem}}</span></h5>
+            <h5 class="card-title text-dark">Título: <span class="text-secondary">{{post.titulo}}</span></h5>
+            <h5 class="card-title text-dark">Texto: <span class="text-secondary">{{post.texto}}</span></h5>
+            <h5 class="card-title text-dark">Link Img: <span class="text-secondary">{{post.linkimg}}</span></h5>
+            <h5 class="card-title text-dark">Data de Inclusão: <span class="text-secondary">{{post.dataInclusao}}</span></h5>
+        </div>
+    </div>
+    <!-- <div class="card border-info m-3" style="max-width: 50rem;">
+        <div class="card-header text-info">
+            <h2>Post {{post.id}}</h2>
+        </div>
+        <div class="card-body text-info">
+            <h5 class="card-title">Id Postagem: {{post.idPostagem}}</h5>
+            <h5 class="card-title">Título: {{post.titulo}}</h5>
+            <h5 class="card-title">Texto: {{post.texto}}</h5>
+            <h5 class="card-title">Link Img: {{post.linkimg}}</h5>
+            <h5 class="card-title">Data de Inclusão: {{post.dataInclusao}}</h5>
+        </div>
+    </div> -->
+</div>
+
+<!-- 
+<h1>Postagem</h1>
+idPostagem:{{postagem.idPostagem}} <br />
+Titulo:{{postagem.titulo}}<br />
+Texto:{{postagem.texto}}<br />
+Link da imagem:{{postagem.linkimg}}<br />
+Data da Postagem:{{postagem.dataInclusao}}<br />
+
+<table>
+    <th>idPostagem</th>
+    <th>Titulo</th>
+    <th>Texto</th>
+    <th>Link da Imagem</th>
+    <th>Data</th>
+    <tr *ngFor="let item of postagens">
+        <td>{{item.idPostagem}}</td>
+        <td>{{item.titulo}}</td>
+        <td>{{item.texto}}</td>
+        <td>{{item.linkimg}}</td>
+        <td>{{item.dataInclusao}}</td>
+    </tr>
+</table> -->
