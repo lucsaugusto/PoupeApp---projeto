@@ -1,1 +1,34 @@
-<p>contact works!</p>
+<div class="row" id="titulo">
+  <div class="col-md-12">
+      <h1>Entre em contato conosco</h1>
+  </div>
+</div>
+
+<div class="container" id="formulario">
+  <div class="form-group">
+      <label for="nome">Nome</label>
+      <input type="text" class="form-control" id="nome" placeholder="Digite o nome" [(ngModel)]="nome" maxlength="15" required >
+      <span *ngIf='_msgErroN'>{{_msgErroN}}</span>
+  </div>
+  <div class="form-group">
+      <label for="Sobrenome">Sobrenome</label>
+      <input type="text" class="form-control" id="sobrenome" placeholder="Digite o sobrenome" [(ngModel)]="sobrenome" maxlength="50" required>
+      <span *ngIf='_msgErroS'>{{_msgErroS}}</span>
+  </div>
+  <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="email" placeholder="name@example.com.br" [(ngModel)]="email" maxlength="25" required>
+      <span *ngIf='_msgErroE'>{{_msgErroE}}</span>
+  </div>
+  <div class="form-group">
+      <label for="Telefone">Telefone</label>
+      <input type="tel" class="form-control" id="tel" [(ngModel)]="tel" placeholder="(XX) 99999-9999" maxlength="11" required>
+      <span *ngIf='_msgErroT'>{{_msgErroT}}</span>
+  </div>
+  <div class="form-group">
+      <label for="mensagem">Mensagem</label>
+      <textarea class="form-control" [(ngModel)]="msg" id="mensagem" rows="5" maxlength="400" required></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary butao" (click)="validacao()">Enviar</button>
+</div>
