@@ -2,51 +2,57 @@
 <br>
 <br>
 <h1 class="title_text">Cadastre-se </h1>
-<form id="sign-up" class="form-horizontal form-signin" method="post"
-    action="/index.php?p=new_user_validate&amp;plan=0&amp;u_openidtype=0">
-
-
-    <form>
-        <div class="row">
-            <div class="col">
-                <input type="text" class="form-control" placeholder="Nome">
-            </div>
-            <div class="col">
-                <input type="text" class="form-control" placeholder="Sobrenome">
-            </div>
+<form id="sign-up" class="form-horizontal form-signin">
+    <div class="row">
+        <div class="col">
+            <input type="text" class="form-control" id="nome" placeholder="Digite o nome" [(ngModel)]="nome"
+                maxlength="15" required>
+            <span *ngIf='_msgErroNome'>{{_msgErroNome}}</span>
         </div>
-    </form>
+        <div class="col">
+            <input type="text" class="form-control" id="sobrenome" placeholder="Digite o sobrenome"
+                [(ngModel)]="sobrenome" maxlength="50" required>
+            <span *ngIf='_msgErroSobrenome'>{{_msgErroSobrenome}}</span>
+        </div>
+    </div>
 
     <br>
     <div class="form-group form-group-margin">
 
         <label for="inputUsername" class="no-mobile-display none-display">Endereço de
             e-mail</label>
-        <input type="email" name="u_econtact" value="" class="form-control ajax-convert-lable field-required "
-            data-placeholder="Endereço de e-mail" id="u_econtact" placeholder="Endereço de e-mail">
+        <input type="email" class="form-control" id="email" placeholder="name@example.com.br" [(ngModel)]="email"
+            maxlength="25" required>
+        <span *ngIf='_msgErroEmail'>{{_msgErroEmail}}</span>
     </div>
 
-    <form>
-        <div class="row">
-            <div class="col">
-                <input type="text" class="form-control" placeholder="Telefone">
-            </div>
-            <div class="col">
-                <input type="text" class="form-control" placeholder="Celular">
-            </div>
+
+    <div class="row">
+        <div class="col">
+            <input type="tel" class="form-control" id="tel" [(ngModel)]="tel" placeholder="(XX) 99999-9999"
+                maxlength="11" required>
+            <span *ngIf='_msgErroTel'>{{_msgErroTel}}</span>
         </div>
-    </form>
+        <!-- <div class="col">
+                <input type="tel" class="form-control" id="tel" [(ngModel)]="tel" placeholder="(XX) 99999-9999"
+                    maxlength="11" required>
+                <span *ngIf='_msgErroTel'>{{_msgErroTel}}</span>
+            </div> -->
+    </div>
+
     <br>
     <div class="form-group form-group-margin">
         <label for="inputPassword" class="no-mobile-display none-display">Senha</label>
-        <input type="password" name="u_pass" value="" class="form-control ajax-convert-lable field-required "
-            data-placeholder="Senha" id="u_pass" placeholder="Senha">
+        <input type="password" value="" class="form-control" id="senha" placeholder="Digite sua senha">
+        <span *ngIf='_msgErroSenha'>{{_msgErroSenha}}</span>
+        <span *ngIf='_msgForcaSenha'>{{_msgForcaSenha}}</span>
     </div>
     <div class="form-group form-group-margin">
         <label for="inputPasswordConfirm" class="no-mobile-display none-display">Confirmar
             senha</label>
-        <input type="password" name="u_pass2" value="" class="form-control ajax-convert-lable field-required "
-            data-placeholder="Confirmar senha" id="u_pass2" placeholder="Confirmar senha">
+        <input type="password" value="" class="form-control" data-placeholder="Confirmar senha" id="senhaConf"
+            placeholder="Confirme sua senha">
+        <span *ngIf='_msgConfirmaSenha'>{{_msgConfirmaSenha}}</span>
     </div>
 
     <div class="form-group  keep-newsletter">
@@ -59,36 +65,18 @@
         </div>
     </div>
 
-    <!-- Google reCaptcha -->
-    <!-- <div style="padding-bottom: 15px;" class="g-recaptcha"
-                                data-sitekey="6LdMNiMTAAAAAGr0ibqKRZc3e5Z6wfLBraX9NuOY"
-                                data-callback="reCaptchaCallback">
-                                <div style="width: 304px; height: 78px;">
-                                    <div><iframe
-                                            src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LdMNiMTAAAAAGr0ibqKRZc3e5Z6wfLBraX9NuOY&amp;co=aHR0cHM6Ly93d3cuMTIzZm9ybWJ1aWxkZXIuY29tOjQ0Mw..&amp;hl=pt-BR&amp;v=eQmzkx3d5dtuXlLOA4pEID3I&amp;size=normal&amp;cb=z05g2zgifbf0"
-                                            width="304" height="78" role="presentation" name="a-t98743f1c1uu"
-                                            frameborder="0" scrolling="no"
-                                            sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe>
-                                    </div><textarea id="g-recaptcha-response" name="g-recaptcha-response"
-                                        class="g-recaptcha-response"
-                                        style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea>
-                                </div>
-         </div> -->
 
     <div class="form-group ">
         <div class="gdpr_text">Ao se inscrever, você concorda com nossos <a href="" target="gdpr-compliance"
-                class="">Termos de Serviço</a> e <a href="" target="gdpr-compliance" class="privacypolicy">Política de
+                class="">Termos de Serviço</a> e <a href="" target="gdpr-compliance" class="privacypolicy">Política
+                de
                 Privacidade</a>.
         </div>
 
         <div class="">
-            <button id="submit-form-button" class="btn btn-sm btn-success center margin-bottom-15 no-border"
-                type="submit" disabled="">
-                Cadastrar </button>
+            <button type="submit" class="btn btn-primary butao" width="" (click)="validacao()">Cadastrar</button>
         </div>
     </div>
 
-
-
-
 </form>
+
