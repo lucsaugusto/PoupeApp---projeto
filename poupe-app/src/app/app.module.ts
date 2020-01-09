@@ -8,7 +8,8 @@ import { FooterComponent } from './component/footer/footer.component';
 import { FormsModule } from '@angular/forms'
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { PostsComponent } from './component/posts/posts.component'
+import { PostsComponent } from './component/posts/posts.component';
+import { SignUpComponent } from './component/sign-up/sign-up.component'
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { PostsComponent } from './component/posts/posts.component'
     AboutUsComponent,
     ContactComponent,
     FooterComponent,
-    PostsComponent
+    PostsComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
