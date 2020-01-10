@@ -7,22 +7,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignUpComponent implements OnInit {
 
-  private nome: string;
-  private sobrenome: string;
-  private email: string;
-  private tel: string;
-  private senha: string;
-  private senhaConf: string;
+  private nome: string = "";
+  private sobrenome: string = "";
+  private email: string = "";
+  private tel: string = null;
+  private cel: string = null;
+  private senha: string = "";
+  private senhaConf: string = "";
+
   private filtro: any = /^([a-zA-zà-úÀ-Ú]|\s+)+$/;
   private num: any = /^[0-9]+$/;
-  private verfSenha: any = /^([@#$%&a-zA-zà-úÀ-Ú])+$/;
-  private verfCaractere: any = /^([@#$%&])+$/;
+  private verfSenha: any = /^([@#$%&a-zA-zà-úÀ-Ú0-9])+$/;
+  private verfCaractere: any = /[!@#$%^&*(),.?":{}|<>]/;
+
   private _msgErroNome: string = null;
   private _msgErroSobrenome: string = null;
   private _msgErroEmail: string = null;
   private _msgErroTel: string = null;
+  private _msgErroCel: string = null;
   private _msgErroSenha: string = null;
-  private _msgForcaSenha: string = null;
+  private _msgSenhaForte: string = null;
+  private _msgSenhaFraca: string = null;
   private _msgConfirmaSenha: string = null;
 
   constructor() { }
@@ -30,8 +35,27 @@ export class SignUpComponent implements OnInit {
   ngOnInit() {
   }
 
+  verificarForca() {
+    //alert("validou a senha / verificar força ");
+    if (this.senha !== "") {
+      this._msgErroSenha = "";
+      if (!this.verfCaractere.test(this.senha)) {
+        this._msgSenhaForte = "";
+        this._msgSenhaFraca = `Senha Fraca`;
+      }
+      else {
+        this._msgSenhaForte = `Senha Forte`;
+        this._msgSenhaFraca = "";
+      }
+    }
+    if (this.senha === "") {
+      this._msgSenhaForte = "";
+      this._msgSenhaFraca = "";
+    }
+  }
+
   validacao() {
-    if (this.nome == "" || this.sobrenome == "" || this.email == "" || this.tel == null || this.senha == "" || this.senhaConf == "") {
+    if (this.nome == "" || this.sobrenome == "" || this.email == "" || this.cel == null || this.tel == null || this.senha == "" || this.senhaConf == "") {
       alert('Preencha todos os campos');
     }
     if (!this.filtro.test(this.nome)) {
@@ -56,46 +80,47 @@ export class SignUpComponent implements OnInit {
     else {
       this._msgErroEmail = null;
     }
-
-    if (!this.num.test(this.tel)) {
-      this.tel = null;
-      this._msgErroTel = `Apenas digitos`;
+    if (this.cel.length < 11 || !this.num.test(this.cel)) {
+      this.cel = null;
+      this._msgErroCel = `Insira um número válido`;
     }
     else {
-      this._msgErroTel = null;
+      this._msgErroCel = "";
     }
-    if (this.tel.length < 10 || this.tel.length > 11) {
+
+    if (this.tel.length < 10 || !this.num.test(this.tel)) {
       this.tel = null;
       this._msgErroTel = `Insira um número válido`;
     }
     else {
-      this._msgErroTel = null;
+      this._msgErroTel = "";
     }
 
-    if (this.senha.length < 10 || !this.verfSenha.test(this.senha)) {
-      this.senha = null;
+    if (this.senha.length < 10) {
+      this.senha = "";
       this._msgErroSenha = `Senha inválida, digite uma senha com pelo menos 10 dígitos(Letras, Números e '@ # $ % &').`;
     }
-    if (!this.verfCaractere.test(this.senha)) {
-      this._msgForcaSenha = `\nSenha Fraca`;
-    }
-    else {
-      this._msgForcaSenha = `\nSenha Forte`;
-    }
 
-    if(this.senha != this.senhaConf){
-      this._msgConfirmaSenha = `Senhas diferentes, digite novamente`;
-    }
-    else {
+
+    if (this.senha === this.senhaConf) {
       this._msgConfirmaSenha = "";
     }
+    else if (this.senhaConf !== "") {
+      this.senhaConf = "";
+      this._msgConfirmaSenha = `Senhas diferentes, digite novamente`;
+    }
 
-    if (this.nome != "" && this.sobrenome != "" && this.email != "" && this.tel != null && this.senha != "" || this.senhaConf != "") {
+    if (this.nome != "" && this.sobrenome != "" && this.email != "" && this.cel != null && this.tel != null && this.senha != "" && this.senhaConf != "") {
       alert("Dados enviados com SUCESSO!!");
       this.nome = "";
       this.sobrenome = "";
       this.email = "";
+      this.cel = null;
       this.tel = null;
+      this.senha = "";
+      this.senhaConf = "";
+      this._msgSenhaForte = "";
+      this._msgSenhaFraca = "";
     }
   }
 }

@@ -15,3 +15,13 @@ h1 {
     text-align: center;
 }
 
+span{
+    color: red;
+}
+
+#fraca {
+    color: red;
+}
+#forte {
+    color: green;
+}
