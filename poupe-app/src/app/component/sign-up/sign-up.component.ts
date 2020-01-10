@@ -8,7 +8,6 @@ import { Component, OnInit } from '@angular/core';
 export class SignUpComponent implements OnInit {
 
   private nome: string = "";
-  private sobrenome: string = "";
   private email: string = "";
   private tel: string = null;
   private cel: string = null;
@@ -18,7 +17,7 @@ export class SignUpComponent implements OnInit {
   private filtro: any = /^([a-zA-zà-úÀ-Ú]|\s+)+$/;
   private num: any = /^[0-9]+$/;
   private verfSenha: any = /^([@#$%&a-zA-zà-úÀ-Ú0-9])+$/;
-  private verfCaractere: any = /[!@#$%^&*(),.?":{}|<>]/;
+  private verfCaractere: any = /([@#$%&])/;
 
   private _msgErroNome: string = null;
   private _msgErroSobrenome: string = null;
@@ -36,41 +35,36 @@ export class SignUpComponent implements OnInit {
   }
 
   verificarForca() {
-    //alert("validou a senha / verificar força ");
-    if (this.senha !== "") {
-      this._msgErroSenha = "";
-      if (!this.verfCaractere.test(this.senha)) {
-        this._msgSenhaForte = "";
-        this._msgSenhaFraca = `Senha Fraca`;
-      }
-      else {
-        this._msgSenhaForte = `Senha Forte`;
-        this._msgSenhaFraca = "";
-      }
-    }
-    if (this.senha === "") {
+    if (this.senha.length < 10 || !this.verfSenha.test(this.senha)) {
+      this.senha = "";
+      this.senhaConf = "";
+      this._msgErroSenha = `Senha inválida, digite uma senha com pelo menos 10 dígitos(Letras, Números e '@ # $ % &').`;
       this._msgSenhaForte = "";
+      this._msgSenhaFraca = "";
+      this._msgConfirmaSenha = "";
+    }
+    else if (!this.verfCaractere.test(this.senha)) {
+      this._msgErroSenha = "";
+      this._msgSenhaForte = "";
+      this._msgSenhaFraca = `Senha Fraca`;
+    }
+    else {
+      this._msgErroSenha = "";
+      this._msgSenhaForte = `Senha Forte`;
       this._msgSenhaFraca = "";
     }
   }
 
   validacao() {
-    if (this.nome == "" || this.sobrenome == "" || this.email == "" || this.cel == null || this.tel == null || this.senha == "" || this.senhaConf == "") {
+    if (this.nome == "" || this.email == "" || this.cel == null || this.tel == null || this.senha == "" || this.senhaConf == "") {
       alert('Preencha todos os campos');
     }
-    if (!this.filtro.test(this.nome)) {
+    if (!this.filtro.test(this.nome) || this.nome.indexOf(" ") < 1) {
       this.nome = "";
       this._msgErroNome = `Dado inválido`;
     }
     else {
       this._msgErroNome = null;
-    }
-    if (!this.filtro.test(this.sobrenome)) {
-      this.sobrenome = "";
-      this._msgErroSobrenome = `Dado inválido`;
-    }
-    else {
-      this._msgErroSobrenome = null;
     }
 
     if (this.email.indexOf("@") == -1 && this.email.indexOf("@") > 1 || this.email.indexOf(".") == -1) {
@@ -96,11 +90,12 @@ export class SignUpComponent implements OnInit {
       this._msgErroTel = "";
     }
 
-    if (this.senha.length < 10) {
-      this.senha = "";
-      this._msgErroSenha = `Senha inválida, digite uma senha com pelo menos 10 dígitos(Letras, Números e '@ # $ % &').`;
-    }
-
+    // if (this.senha.length < 10) {
+    //   this.senha = "";
+    //   this._msgErroSenha = `Senha inválida, digite uma senha com pelo menos 10 dígitos(Letras, Números e '@ # $ % &').`;
+    //   this._msgSenhaForte = "";
+    //   this._msgSenhaFraca = "";
+    // }
 
     if (this.senha === this.senhaConf) {
       this._msgConfirmaSenha = "";
@@ -110,10 +105,9 @@ export class SignUpComponent implements OnInit {
       this._msgConfirmaSenha = `Senhas diferentes, digite novamente`;
     }
 
-    if (this.nome != "" && this.sobrenome != "" && this.email != "" && this.cel != null && this.tel != null && this.senha != "" && this.senhaConf != "") {
+    if (this.nome != "" && this.email != "" && this.cel != null && this.tel != null && this.senha != "" && this.senhaConf != "") {
       alert("Dados enviados com SUCESSO!!");
       this.nome = "";
-      this.sobrenome = "";
       this.email = "";
       this.cel = null;
       this.tel = null;

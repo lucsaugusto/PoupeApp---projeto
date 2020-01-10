@@ -17,14 +17,8 @@
                             <div class="col">
                                 <label for="nome">Nome</label>
                                 <input type="text" class="form-control" id="nome" placeholder="Digite o nome"
-                                    [(ngModel)]="nome" maxlength="15" required>
+                                    [(ngModel)]="nome" maxlength="60" required>
                                 <span *ngIf='_msgErroNome'>{{_msgErroNome}}</span>
-                            </div>
-                            <div class="col">
-                                <label for="nome">Sobrenome</label>
-                                <input type="text" class="form-control" id="sobrenome" placeholder="Digite o sobrenome"
-                                    [(ngModel)]="sobrenome" maxlength="50" required>
-                                <span *ngIf='_msgErroSobrenome'>{{_msgErroSobrenome}}</span>
                             </div>
                         </div>
                         <br>
@@ -55,7 +49,7 @@
                         <div class="form-group form-group-margin">
                             <label for="nome">Senha</label>
                             <input type="password" value="" class="form-control" id="senha"
-                                placeholder="Digite sua senha" [(ngModel)]="senha" required>
+                                placeholder="Digite sua senha" maxlength="25"[(ngModel)]="senha" required>
                             <span *ngIf='_msgErroSenha'>{{_msgErroSenha}}</span>
                             <span id="forte" *ngIf='_msgSenhaForte'>{{_msgSenhaForte}}</span>
                             <span id="fraca" *ngIf='_msgSenhaFraca'>{{_msgSenhaFraca}}</span>
@@ -64,7 +58,7 @@
                         <div class="form-group form-group-margin">
                             <label for="nome">Confirmar senha</label>
                             <input type="password" value="" class="form-control" data-placeholder="Confirmar senha"
-                                id="senhaConf" placeholder="Confirme sua senha" [(ngModel)]="senhaConf"
+                                id="senhaConf" placeholder="Confirme sua senha" maxlength="25" [(ngModel)]="senhaConf"
                                 (click)="verificarForca()" required>
                             <span *ngIf='_msgConfirmaSenha'>{{_msgConfirmaSenha}}</span>
                         </div>
