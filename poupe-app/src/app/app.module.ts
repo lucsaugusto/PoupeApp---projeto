@@ -9,7 +9,11 @@ import { FormsModule } from '@angular/forms'
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { PostsComponent } from './component/posts/posts.component';
-import { SignUpComponent } from './component/sign-up/sign-up.component'
+import { SignUpComponent } from './component/sign-up/sign-up.component';
+import { MyProfileComponent } from './component/my-profile/my-profile.component'
+import { PostagemService } from './service/postagem.service';
+import { UsersService } from './service/users.service';
+import { SignInComponent } from './component/sign-in/sign-in.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,9 @@ import { SignUpComponent } from './component/sign-up/sign-up.component'
     ContactComponent,
     FooterComponent,
     PostsComponent,
-    SignUpComponent
+    SignUpComponent,
+    MyProfileComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +33,7 @@ import { SignUpComponent } from './component/sign-up/sign-up.component'
     FormsModule,
     HttpClientModule   
   ],
-  providers: [],
+  providers: [PostagemService, UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
