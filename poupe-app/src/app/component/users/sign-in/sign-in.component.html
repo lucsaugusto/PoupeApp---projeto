@@ -1,0 +1,54 @@
+
+<div class="container-fluid bg-light">
+
+    <div class="row py-5 mt-5 text-center justify-content-around">
+
+        <div class="col-xl-4 col-sm-2 mb-5">
+
+            <div class="bg-white rounded shadow-sm pb-3 px-4">
+                <div class="row ml-1 mb-2 text-left" id="titulo">
+                    <h3 class="display-4">Entrar</h3>
+                </div>
+                <div class="container text-left" id="formulario">
+                    <div id="sign-up" class="form-horizontal ">
+
+                        <br/>
+                        <div class="form-group form-group-margin" >
+                            <label for="nome">Email</label>
+                            <label for="inputUsername" class="no-mobile-display none-display">Endereço de e-mail</label>
+                            <input type="email" class="form-control" id="email" placeholder="name@example.com.br"
+                                [(ngModel)]="email" maxlength="25" required>
+                            <span *ngIf='_msgErroEmail'>{{_msgErroEmail}}</span>
+                        </div>
+
+                        <br/>
+
+                        <div class="form-group form-group-margin">
+                            <label for="nome">Senha</label>
+                            <input type="password" value="" class="form-control" id="senha"
+                                placeholder="Digite sua senha" maxlength="25" [(ngModel)]="senha" required>
+                            <span *ngIf='_msgErroSenha'>{{_msgErroSenha}}</span>
+                            <span id="forte" *ngIf='_msgSenhaForte'>{{_msgSenhaForte}}</span>
+                            <span id="fraca" *ngIf='_msgSenhaFraca'>{{_msgSenhaFraca}}</span>
+                        </div>
+
+                        <div class="form-group ">
+                            <br/>
+                            <label class="t1-label remember">
+                                    <input type="checkbox" value="2" name="remember_me" checked="checked">Lembrar-me
+                                    <a class="Esqueceu" href="/sign-up">Esqueceu a senha?</a>
+                                </label>  
+                            
+                            <div class="">
+                                <button type="submit" class="btn btn-primary" width="" (click)="validacao()"> Entrar </button>
+                                     
+                            </div>                       
+                            <br/>                                                  
+                            <p class="izU2O">Não tem uma conta? <a href="/sign-up"><span
+                               class="Cadastre-se">Cadastre-se</span></a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

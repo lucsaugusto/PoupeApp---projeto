@@ -1,0 +1,15 @@
+span{
+    color: red;
+}
+
+#fraca {
+    color: red;
+}
+#forte {
+    color: green;
+}
+
+#sucesso {
+    color: green;
+    font-style: bold;
+}

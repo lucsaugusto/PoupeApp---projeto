@@ -1,0 +1,89 @@
+<div class="container-fluid bg-light">
+
+    <div class="row py-5 mt-5 text-center justify-content-around">
+
+        <div class="col-xl-10 col-sm-10 mb-5">
+
+            <div class="bg-white rounded shadow-sm pb-3 px-4">
+                <div class="row ml-1 mb-2 text-left" id="titulo">
+                    <h3 class="display-4">Cadastre-se</h3>
+                </div>
+                <div class="container text-left" id="formulario">
+                    <div id="sign-up" class="form-horizontal ">
+                        <div class="row">
+                            <div class="col">
+                                <label for="nome">Nome</label>
+                                <input type="text" class="form-control" id="nome" placeholder="Digite o nome"
+                                    [(ngModel)]="user.nome" maxlength="60" required>
+                                <span *ngIf='_msgErroNome'>{{_msgErroNome}}</span>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group form-group-margin">
+                            <label for="nome">Email</label>
+                            <label for="inputUsername" class="no-mobile-display none-display">Endereço de
+                                e-mail</label>
+                            <input type="email" class="form-control" id="email" placeholder="name@example.com.br"
+                                [(ngModel)]="user.email" maxlength="25" required>
+                            <span *ngIf='_msgErroEmail'>{{_msgErroEmail}}</span>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col">
+                                <label for="nome">Telefone</label>
+                                <input type="tel" class="form-control" id="tel" [(ngModel)]="user.telefone"
+                                    placeholder="(XX) 99999-9999" maxlength="11" required>
+                                <span *ngIf='_msgErroTel'>{{_msgErroTel}}</span>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group form-group-margin">
+                            <label for="nome">Senha</label>
+                            <input type="password" value="" class="form-control" id="senha"
+                                placeholder="Digite sua senha" maxlength="25"[(ngModel)]="user.senha" required>
+                            <span *ngIf='_msgErroSenha'>{{_msgErroSenha}}</span>
+                            <span id="forte" *ngIf='_msgSenhaForte'>{{_msgSenhaForte}}</span>
+                            <span id="fraca" *ngIf='_msgSenhaFraca'>{{_msgSenhaFraca}}</span>
+                        </div>
+                        <br>
+                        <div class="form-group form-group-margin">
+                            <label for="nome">Confirmar senha</label>
+                            <input type="password" value="" class="form-control" data-placeholder="Confirmar senha"
+                                id="senhaConf" placeholder="Confirme sua senha" maxlength="25" [(ngModel)]="user.senhaConf"
+                                (click)="verificarForca()" required>
+                            <span *ngIf='_msgConfirmaSenha'>{{_msgConfirmaSenha}}</span>
+                        </div>
+                        <br>
+                        <div class="form-group  keep-newsletter">
+                            <div class="col-md-12 ">
+                                <div class="checkbox-regular">
+                                    <label class="margin-bottom-10">
+                                        <input type="checkbox" id="u_newsletter" name="u_newsletter"
+                                            class="regular-checkbox" value="1" checked=""><label
+                                            for="u_newsletter"></label> Assine nossa Newsletter </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="gdpr_text">Ao se inscrever, você concorda com nossos <a href=""
+                                    target="gdpr-compliance" class="">Termos de Serviço</a> e <a href=""
+                                    target="gdpr-compliance" class="privacypolicy">Política
+                                    de
+                                    Privacidade</a>.
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary mr-5" width=""
+                                    (click)="validacao()">Cadastrar</button>
+                                <span id ="sucesso" *ngIf='_msgEnvioDados'>{{_msgEnvioDados}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+
+</div>
