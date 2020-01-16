@@ -7,8 +7,8 @@ import { Users } from 'src/app/model/users';
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })
-export class SignUpComponent implements OnInit {
 
+export class SignUpComponent implements OnInit {
   private user: Users = new Users();
   public users: Users[];
   private existe: boolean = false;

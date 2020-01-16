@@ -6,6 +6,9 @@ import { Users } from 'src/app/model/users';
   providedIn: 'root'
 })
 export class UsersService {
+  login(user: Users) {
+    throw new Error("Method not implemented.");
+  }
 
   constructor(private http: HttpClient) { }
 

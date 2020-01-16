@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../model/user';
+import { Login } from 'src/app/model/login';
 
 @Injectable({
   providedIn: 'root'
@@ -24,4 +25,5 @@ export class UsersService {
   update(user: User){
     return this.http.put(`http://cloud.professorisidro.com.br:8088/usuario/`, user);
   }
+
 }

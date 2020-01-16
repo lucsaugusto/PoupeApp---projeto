@@ -17,8 +17,7 @@
                             <label for="nome">Email</label>
                             <label for="inputUsername" class="no-mobile-display none-display">Endereço de e-mail</label>
                             <input type="email" class="form-control" id="email" placeholder="name@example.com.br"
-                                [(ngModel)]="email" maxlength="25" required>
-                            <span *ngIf='_msgErroEmail'>{{_msgErroEmail}}</span>
+                                [(ngModel)]="login.email" (click)="limpar()" maxlength="25" required>
                         </div>
 
                         <br/>
@@ -26,10 +25,8 @@
                         <div class="form-group form-group-margin">
                             <label for="nome">Senha</label>
                             <input type="password" value="" class="form-control" id="senha"
-                                placeholder="Digite sua senha" maxlength="25" [(ngModel)]="senha" required>
+                                placeholder="Digite sua senha" maxlength="40" [(ngModel)]="login.senha" required>
                             <span *ngIf='_msgErroSenha'>{{_msgErroSenha}}</span>
-                            <span id="forte" *ngIf='_msgSenhaForte'>{{_msgSenhaForte}}</span>
-                            <span id="fraca" *ngIf='_msgSenhaFraca'>{{_msgSenhaFraca}}</span>
                         </div>
 
                         <div class="form-group ">
@@ -40,8 +37,12 @@
                                 </label>  
                             
                             <div class="">
-                                <button type="submit" class="btn btn-primary" width="" (click)="validacao()"> Entrar </button>
-                                     
+                                <button type="submit" class="btn btn-primary" width="" (click)="fazerLogin()"> Entrar </button>
+                                <br>
+                                <span id ="sucesso" *ngIf='_msgEnvioDados'>{{_msgEnvioDados}}</span>
+                                <span id ="falha" *ngIf='_msgErroEmail'>{{_msgErroEmail}}</span>
+                                <span id ="falha" *ngIf='_msgCampoVazio'>{{_msgCampoVazio}}</span>
+                                
                             </div>                       
                             <br/>                                                  
                             <p class="izU2O">Não tem uma conta? <a href="/sign-up"><span
