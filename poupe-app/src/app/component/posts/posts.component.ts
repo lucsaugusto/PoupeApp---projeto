@@ -19,6 +19,7 @@ export class PostsComponent implements OnInit {
 
   //É chamado assim que baixar todos os componentes e serviços na maquina do usuario;
   ngOnInit() {
+    this.btnClickAll();
   }
   
   //Começa a minha aplicação
