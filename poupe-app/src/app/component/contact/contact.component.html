@@ -24,7 +24,7 @@
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input type="email" class="form-control" id="email" placeholder="name@example.com.br"
-                            [(ngModel)]="email" maxlength="25" required>
+                            [(ngModel)]="email" maxlength="40" required>
                         <span *ngIf='_msgErroE'>{{_msgErroE}}</span>
                     </div>
                     <div class="form-group">
@@ -35,11 +35,11 @@
                     </div>
                     <div class="form-group">
                         <label for="mensagem">Mensagem</label>
-                        <textarea class="form-control" [(ngModel)]="msg" id="mensagem" rows="5" maxlength="400"
+                        <textarea class="form-control textarea" [(ngModel)]="msg" id="mensagem" rows="5" maxlength="400"
                             required></textarea>
                     </div>
 
-                    <button type="submit" class="btn btn-primary butao" width="" (click)="validacao()">Enviar</button>
+                    <button type="submit" class="btn btn-primary" width="" (click)="validacao()">Enviar</button>
                 </div>
             </div>
         </div>

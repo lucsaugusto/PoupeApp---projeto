@@ -4,6 +4,11 @@ h2 {
     color: #091f2f;
     text-transform: uppercase;
 }
+
+.textarea {
+    resize: none;
+}
+
 .accordion-section .panel-default > .panel-heading {
     border: 0;
     background: #f4f4f4;
