@@ -34,7 +34,7 @@ export class SignInComponent implements OnInit {
         this.login.email = "";
         this.login.senha = "";
         console.log(`Ok`);
-
+        this.router.navigate(['home']);
       },
         error => {
           this._msgErroEmail = "Falha! O usuário não existe";
@@ -42,6 +42,7 @@ export class SignInComponent implements OnInit {
           this.login.email = "";
           this.login.senha = "";
           console.log(`Erro cod: ${error.status}`);
+          this.router.navigate(['sign-in']);
         });
     }
   }

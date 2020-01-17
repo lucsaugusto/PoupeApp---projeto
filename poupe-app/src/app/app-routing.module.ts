@@ -12,7 +12,7 @@ import { HomeComponent } from './component/home/home.component';
 import { HelpComponent } from './component/help/help.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'posts', pathMatch: 'full' },
+  { path: '', redirectTo: 'sing-in', pathMatch: 'full' },
   {path: 'contact', component: ContactComponent},
   {path: 'about-us', component: AboutUsComponent},
   {path: 'posts', component: PostsComponent},
