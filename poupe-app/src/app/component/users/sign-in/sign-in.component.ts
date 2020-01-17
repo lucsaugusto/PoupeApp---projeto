@@ -3,11 +3,14 @@ import { UsersService } from 'src/app/service/users/users.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Login } from 'src/app/model/login';
 import { LoginService } from './../../../service/login.service';
+import { Globals } from 'src/app/model/globals';
+import { Users } from 'src/app/model/users';
 
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.css']
+  styleUrls: ['./sign-in.component.css'],
+  providers: [ Globals ]
 })
 export class SignInComponent implements OnInit {
 
@@ -28,12 +31,13 @@ export class SignInComponent implements OnInit {
     }
     else {
       this._msgCampoVazio = "";
-      this.loginService.login(this.login).subscribe((login: Login) => {
+      this.loginService.login(this.login).subscribe((userRes: Users) => {
         this._msgErroEmail = "";
         this._msgEnvioDados = "Sucesso! O usuário existe";
         this.login.email = "";
         this.login.senha = "";
         console.log(`Ok`);
+        Globals.user = userRes;
         this.router.navigate(['home']);
       },
         error => {

@@ -3,7 +3,7 @@
     <div class="row py-5 mt-5 text-center justify-content-around">
 
         <div class="col-xl-10 col-sm-10 mb-5">
-            
+
             <div class="bg-white rounded shadow-sm pb-3 px-4">
                 <div class="row ml-1 mb-2 text-left" id="titulo">
                     <h3 class="display-4">Entre em contato conosco</h3>
@@ -12,19 +12,13 @@
                     <div class="form-group">
                         <label for="nome">Nome</label>
                         <input type="text" class="form-control" id="nome" placeholder="Digite o nome" [(ngModel)]="nome"
-                            maxlength="15" required>
+                            maxlength="60" required>
                         <span *ngIf='_msgErroN'>{{_msgErroN}}</span>
-                    </div>
-                    <div class="form-group">
-                        <label for="Sobrenome">Sobrenome</label>
-                        <input type="text" class="form-control" id="sobrenome" placeholder="Digite o sobrenome"
-                            [(ngModel)]="sobrenome" maxlength="50" required>
-                        <span *ngIf='_msgErroS'>{{_msgErroS}}</span>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input type="email" class="form-control" id="email" placeholder="name@example.com.br"
-                            [(ngModel)]="email" maxlength="40" required>
+                            [(ngModel)]="email" maxlength="40" (click)="limpar()" required>
                         <span *ngIf='_msgErroE'>{{_msgErroE}}</span>
                     </div>
                     <div class="form-group">
@@ -35,11 +29,13 @@
                     </div>
                     <div class="form-group">
                         <label for="mensagem">Mensagem</label>
-                        <textarea class="form-control textarea" [(ngModel)]="msg" id="mensagem" rows="5" maxlength="400"
+                        <textarea class="form-control textarea" [(ngModel)]="msg" id="mensagem" placeholder="Escreva sua mensagem" rows="5" maxlength="400"
                             required></textarea>
                     </div>
 
-                    <button type="submit" class="btn btn-primary" width="" (click)="validacao()">Enviar</button>
+                    <button type="submit" class="btn btn-primary mr-5" width="" (click)="validacao()">Enviar</button>
+                    <span id="sucesso" *ngIf='_msgEnvioDados'>{{_msgEnvioDados}}</span>
+                    <span id="falha" *ngIf='_msgCampoVazio'>{{_msgCampoVazio}}</span>
                 </div>
             </div>
         </div>

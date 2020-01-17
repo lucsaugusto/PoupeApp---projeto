@@ -1,47 +1,47 @@
 <br>
 <br>
 <br>
-<p>consultar-users works!</p>
-<table>
-    <tr>
-        <th></th>
-        <th> </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-
-    </tr>
-    <tr *ngFor="let user of users">
-
-    </tr>
-</table>
-
-<table class="table">
-    <thead class="thead-dark">
+<div class="container mt-5">
+    <table>
         <tr>
-            <th scope="col">id Usuário</th>
-            <th scope="col">Nome</th>
-            <th scope="col">Email</th>
-            <th scope="col">Telefone</th>
-            <th scope="col">Senha</th>
-            <th scope="col">Alterar</th>
-            <th scope="col">Deletar</th>
+            <th></th>
+            <th> </th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+
         </tr>
-    </thead>
-    <tbody>
         <tr *ngFor="let user of users">
-            <td scope="row">{{user.idUsuario}}</td>
-            <td>{{user.nome}}</td>
-            <td>{{user.email}}</td>
-            <td>{{user.telefone}}</td>
-            <td>{{user.senha}}</td>
-            <td><a [routerLink]="['/alterar-users', user.idUsuario]"><i
-                        class="fas fa-pen-square" width='50px' height='50px'></i></a>
-            </td>
-            <td><a [routerLink]="['/remover-users', user.idUsuario]"><i
-                        class="fa fa-eraser"></i></a> </td>
+
         </tr>
-    </tbody>
-</table>
+    </table>
+
+    <table class="table col-12 text-center">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">id Usuário</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Email</th>
+                <th scope="col">Telefone</th>
+                <th scope="col">Senha</th>
+                <th scope="col">Alterar</th>
+                <th scope="col">Deletar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td scope="row">{{user.idUsuario}}</td>
+                <td>{{user.nome}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.telefone}}</td>
+                <td>{{user.senha}}</td>
+                <td><a [routerLink]="['/alterar-users', user.idUsuario]"><i class="fas fa-pen-square" width='50px'
+                            height='50px'></i></a>
+                </td>
+                <td><a [routerLink]="['/remover-users', user.idUsuario]"><i class="fa fa-eraser"></i></a> </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -25,3 +25,16 @@
 span{
     color: red;
 }
+
+
+#sucesso {
+    color: green;
+}
+
+#falha {
+    color: red;
+}
+
+h3{
+    color: black;
+}

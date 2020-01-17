@@ -12,7 +12,7 @@ import { HomeComponent } from './component/home/home.component';
 import { HelpComponent } from './component/help/help.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'sing-in', pathMatch: 'full' },
+  {path: '', redirectTo: 'sign-in', pathMatch: 'full' },
   {path: 'contact', component: ContactComponent},
   {path: 'about-us', component: AboutUsComponent},
   {path: 'posts', component: PostsComponent},
@@ -24,7 +24,6 @@ const routes: Routes = [
   {path: 'remover-users/:id', component: InserirUsersComponent},
   {path: 'home', component: HomeComponent},
   {path: 'help', component: HelpComponent}
-
 ];
 
 @NgModule({
