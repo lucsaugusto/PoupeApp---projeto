@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { User } from './../../model/user';
+
 import { UsersService } from 'src/app/service/users.service';
+import { Users } from 'src/app/model/users';
 
 @Component({
   selector: 'app-my-profile',
@@ -11,8 +12,8 @@ import { UsersService } from 'src/app/service/users.service';
 export class MyProfileComponent implements OnInit {
   //Atributos
   novo: boolean = false;
-  users: Array<User> = new Array<User>();
-  user: User = new User(0, '', '', '', '');
+  users: Array<Users> = new Array<Users>();
+  user: Users = new Users();
   idUsuario: number;
   showId: boolean
   showAll: boolean
@@ -31,7 +32,7 @@ export class MyProfileComponent implements OnInit {
 
   //Começa a minha aplicação
   btnClickAll() {
-    this.userService.getAll().subscribe((userOut: User[]) => {
+    this.userService.getAll().subscribe((userOut: Users[]) => {
       this.users = userOut;
       this.showId = false;
       this.showAll = true;
@@ -39,12 +40,12 @@ export class MyProfileComponent implements OnInit {
   }
 
   btnClickId(id:number) {
-    this.userService.getById(id).subscribe((userOut: User) =>{
+    this.userService.getById(id).subscribe((userOut: Users) =>{
       this.user = userOut; 
      }, err => {
        console.log(`Erro cod: ${err.status}`);
      });
-    this.userService.getById(id).subscribe((userOut: User) => {
+    this.userService.getById(id).subscribe((userOut: Users) => {
       this.user = userOut;
       this.showId = true;
       this.showAll = false;
@@ -53,12 +54,12 @@ export class MyProfileComponent implements OnInit {
 
   salvar(){
     if(this.novo){
-      this.userService.insert(this.user).subscribe((user: User) =>{
+      this.userService.insert(this.user).subscribe((user: Users) =>{
         this.user = user;
         this.novo = false;
       });
     } else {
-      this.userService.update(this.user).subscribe((user: User) =>{
+      this.userService.update(this.user).subscribe((user: Users) =>{
         this.user = user;
       });
     }
