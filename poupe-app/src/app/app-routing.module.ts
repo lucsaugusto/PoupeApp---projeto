@@ -8,6 +8,8 @@ import { PostsComponent } from './component/posts/posts.component';
 import { SignUpComponent } from './component/users/sign-up/sign-up.component';
 import { SignInComponent } from './component/users/sign-in/sign-in.component';
 import { InserirUsersComponent } from './component/users/inserir-users/inserir-users.component';
+import { HomeComponent } from './component/home/home.component';
+import { HelpComponent } from './component/help/help.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'posts', pathMatch: 'full' },
@@ -19,7 +21,9 @@ const routes: Routes = [
   {path: 'alterar-users/:id', component: AlterarUsersComponent},
   {path: 'consultar-users', component: ConsultarUsersComponent},
   {path: 'inserir-users', component: InserirUsersComponent},
-  {path: 'remover-users/:id', component: InserirUsersComponent}
+  {path: 'remover-users/:id', component: InserirUsersComponent},
+  {path: 'home', component: HomeComponent},
+  {path: 'help', component: HelpComponent}
 
 ];
 

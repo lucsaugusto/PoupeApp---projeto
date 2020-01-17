@@ -17,6 +17,8 @@ import { AlterarUsersComponent } from './component/users/alterar-users/alterar-u
 import { RemoverUsersComponent } from './component/users/remover-users/remover-users.component';
 import { PostagemService } from './service/postagem.service';
 import { UsersService } from './service/users/users.service';
+import { HomeComponent } from './component/home/home.component';
+import { HelpComponent } from './component/help/help.component';
 
 
 
@@ -33,7 +35,9 @@ import { UsersService } from './service/users/users.service';
     InserirUsersComponent,
     AlterarUsersComponent,
     RemoverUsersComponent,
-    SignInComponent
+    SignInComponent,
+    HomeComponent,
+    HelpComponent
   ],
   imports: [
     BrowserModule,
