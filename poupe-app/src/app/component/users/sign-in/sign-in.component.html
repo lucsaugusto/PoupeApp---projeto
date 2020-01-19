@@ -6,17 +6,19 @@
         <div class="col-xl-4 col-sm-2 mb-5">
 
             <div class="bg-white rounded shadow-sm pb-3 px-4">
-                <div class="row ml-1 mb-2 text-left" id="titulo">
-                    <h3 class="display-4">Entrar</h3>
+                <div class="row ml-1 m-2 text-left" id="titulo">
+                    <h3 class="display-4 title">Entrar</h3>
+                </div>
+                <div>
+                    <hr>
                 </div>
                 <div class="container text-left" id="formulario">
                     <div id="sign-up" class="form-horizontal ">
 
-                        <br/>
                         <div class="form-group form-group-margin" >
                             <label for="nome">Email</label>
                             <label for="inputUsername" class="no-mobile-display none-display">Endereço de e-mail</label>
-                            <input type="email" class="form-control" id="email" placeholder="name@example.com.br"
+                            <input type="email" class="form-control" id="email" placeholder="nome@exemplo.com.br"
                                 [(ngModel)]="login.email" (click)="limpar()" maxlength="40" required>
                         </div>
 

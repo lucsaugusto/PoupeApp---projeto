@@ -3,7 +3,10 @@
         <div class="col-xl-10 col-sm-10 mb-5">
             <div class="bg-white rounded shadow-sm pb-3 px-4">
                 <div class="row ml-1 mb-2 text-left" id="titulo">
-                    <h3 class="display-4">Editar meu perfil</h3>
+                    <h3 class="display-4 title">Editar meu perfil</h3>
+                </div>
+                <div>
+                    <hr>
                 </div>
                 <div class="container text-left" id="formulario">
                     <div id="sign-up" class="form-horizontal">
@@ -24,7 +27,7 @@
                                 none-display">Endereço de
                                 e-mail</label>
                             <input type="email" class="form-control" id="email"
-                                placeholder="name@example.com.br"
+                                placeholder="nome@exemplo.com.br"
                                 [(ngModel)]="user.email" maxlength="25"
                                 required>
                             <span *ngIf='_msgErroEmail'>{{_msgErroEmail}}</span>

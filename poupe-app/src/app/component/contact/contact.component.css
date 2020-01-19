@@ -35,6 +35,11 @@ span{
     color: red;
 }
 
-h3{
-    color: black;
+
+
+.title {
+    font-family: 'Roboto Slab', serif;
+    font-size: 22pt;
+    text-decoration: none;
+    margin-top: 2%;
 }

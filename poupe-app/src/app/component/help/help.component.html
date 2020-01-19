@@ -1,4 +1,4 @@
-<div id="text-help">
+<!-- <div id="text-help">
     <div class="container-fluid bg-light">
         <div class="row py-5 mt-5 text-center justify-content-around">
             <section class="accordion-section clearfix mt-3" aria-label="Question Accordions">
@@ -8,13 +8,16 @@
                     <br>
 
                     <div class="panel panel-default">
-                        <div class="panel-heading p-3 mb-3" role="tab" id="heading1">
-                            <h3 class="panel-title">
-                                <a class="collapsed display-4" role="button" title="" data-toggle="collapse"
+                        <div class="panel-heading p-3 mb-3 col-12 w-100" role="tab" id="heading1">
+                            <h3 class="panel-title d-flex flex-row">
+                                <a class="collapsed" role="button" title="" data-toggle="collapse"
                                     data-parent="#accordion" href="#collapse1" aria-expanded="true"
                                     aria-controls="collapse1">
                                     O que é o Poupe-app?
+                                    
                                 </a>
+                                <a><img role="button" href="#collapse1" class="collapsed" src="https://image.flaticon.com/icons/svg/339/339145.svg" alt="" width="40px"></a>
+                                <img role="button" href="#collapse1" class="collapsed" src="https://image.flaticon.com/icons/svg/339/339145.svg" alt="" width="40px">
                             </h3>
                         </div>
                         <div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading1">
@@ -265,47 +268,157 @@
 
                 </div>
 
-                <div class="container-fluid bg-light">
 
-                    <div class="row py-5 mt-5 text-center justify-content-around">
+                
 
-                        <div class="col-xl-12 col-sm-10 mb-5">
+                
+</div> -->
+<div class="container-fluid bg-light">
 
-                            <div class="bg-white rounded shadow-sm pb-3 px-4">
 
-                                <div class="row ml-1 mb-2 text-left" id="titulo">
-                                    <h4 class="display-4">Ainda está com dúvida? <br> Escreva aqui sua mensagem</h4>
-                                </div>
-                                <div class="container text-left" id="formulario">
-                                    <div class="form-group">
-                                        <label for="nome">Nome</label>
-                                        <input type="text" class="form-control" id="nome" placeholder="Digite o nome"
-                                            [(ngModel)]="nome" maxlength="60" (click)="limpar()" required>
-                                        <span *ngIf='_msgErroN'>{{_msgErroN}}</span>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input type="email" class="form-control" id="email"
-                                            placeholder="name@example.com.br" [(ngModel)]="email" maxlength="40"
-                                            (click)="limpar()" required>
-                                        <span *ngIf='_msgErroE'>{{_msgErroE}}</span>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="mensagem">Mensagem</label>
-                                        <textarea class="form-control textarea" [(ngModel)]="msg" id="mensagem" placeholder="Escreva sua mensagem" rows="5"
-                                            maxlength="400" required></textarea>
-                                    </div>
+<div class="container col-10 text-center">
+    <div style="height: 120px;">
+    </div>
+    <h2>Perguntas Frequentes </h2>
+    <br>
+    <div id="accordion" class="text-center">
+        <div class="card-link m-1" data-toggle="collapse" data-target="#collapseOne">
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0 d-flex flex-row justify-content-between">
+                    <button class="btn btn-link text-dark display-3 pergunta" aria-expanded="true"
+                        aria-controls="collapseOne">
+                        O que é o Poupe-app?
+                    </button>
+                    <img class="ml-auto" src="https://image.flaticon.com/icons/svg/339/339145.svg" alt="" width="40px">
+                </h5>
+            </div>
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body resposta p-4">
+                    O Poupe-app é o lugar certo para quem quer encontrar as melhores pechinchas da
+                    internet! Nós fornecemos um espaço para que os nossa comunidade compartilhe ofertas,
+                    promoções e cupons imperdíveis que encontram pela internet! Nossos membros também
+                    contam com o fórum para tirar suas dúvidas e poder opinar sobre produtos e consumo
+                    além do blog que tem textos especiais para que você faça a melhor escolha e saiba
+                    mais sobre as novidades tecnológicas que aparecem por aí. <br>
 
-                                    <button type="submit" class="btn btn-primary mr-5" width=""
-                                        (click)="validacao()">Enviar</button>
-                                    <span id="sucesso" *ngIf='_msgEnvioDados'>{{_msgEnvioDados}}</span>
-                                    <span id="falha" *ngIf='_msgCampoVazio'>{{_msgCampoVazio}}</span>
-                                </div>
+                    Ao dividir uma boa oferta com a nossa comunidade, você permite que milhares de pessoas tenham acesso
+                    a ela e consigam economizar, com a sua ajuda!
+                </div>
+            </div>
+        </div>
+
+        <div class="card-link m-1" data-toggle="collapse" data-target="#collapseTwo">
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0 d-flex flex-row justify-content-between">
+                    <button class="btn btn-link text-dark display-3 pergunta" aria-expanded="true"
+                        aria-controls="collapseTwo">
+                        O Poupe-app é uma loja?
+                    </button>
+                    <img class="ml-auto" src="https://image.flaticon.com/icons/svg/339/339145.svg" alt="" width="40px">
+                </h5>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body resposta p-4">
+                    Não, nós não fazemos nenhum tipo de venda. O Poupe-app é um site que agrega dicas de
+                    ofertas de diversos e-commerces do Brasil, com ajuda dos nossos membros, que
+                    divulgam várias ofertas incríveis. Nós compartilhamos as ofertas e redirecionamos os
+                    nossos membros para que possam realizar a compra no site da loja que ofereceu o
+                    produto/serviço
+                </div>
+            </div>
+        </div>
+
+        <div class="card-link m-1" data-toggle="collapse" data-target="#collapseThree">
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0 d-flex flex-row justify-content-between">
+                    <button class="btn btn-link text-dark display-3 pergunta" aria-expanded="true"
+                        aria-controls="collapseThree">
+                        Como comprar os produtos que aparecem em oferta no Poupe-app?
+                    </button>
+                    <img class="ml-auto" src="https://image.flaticon.com/icons/svg/339/339145.svg" alt="" width="40px">
+                </h5>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body resposta p-4">
+                    Ao escolher uma promoção que te interessa, basta verificar se há alguma instrução
+                    adicional para chegar no valor e clicar no botão "ir para a loja" que você será
+                    redirecionado para o site que está oferecendo a oferta. Nossa equipe de moderadores
+                    confere todas as informações sobre a promoção para garantir que a oferta é
+                    verdadeira e que a loja é confiável, assim você pode comprar sem preocupação!
+                </div>
+            </div>
+        </div>
+
+        <div class="card-link m-1" data-toggle="collapse" data-target="#collapseFour">
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0 d-flex flex-row justify-content-between">
+                    <button class="btn btn-link text-dark display-3 pergunta" aria-expanded="true"
+                        aria-controls="collapseFour">
+                        O Poupe-app é confiável?
+                    </button>
+                    <img class="ml-auto" src="https://image.flaticon.com/icons/svg/339/339145.svg" alt="" width="40px">
+                </h5>
+            </div>
+            <div id="collapseFour" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body resposta p-4">
+                    O Poupe-app é um site 100% confiável! Todos os links compartilhados são avaliados
+                    pelo
+                    nosso sistema e por nosso time de especialistas que garantem uma navegação
+                    completamente segura para nossa comunidade e visitantes.
+                </div>
+            </div>
+        </div>
+        <div style="height: 120px;">
+        </div>
+
+        <div>
+            <hr>
+        </div>
+
+            <div class="row py-5 text-center justify-content-around">
+
+                <div class="col-xl-12 col-sm-10 mb-5">
+
+                    <div class="bg-white rounded shadow-sm pb-3 px-4">
+
+                        <div class="row ml-1 m-2 text-left" id="titulo">
+                            <h4 class="title">Ainda está com dúvida? <br> Escreva aqui sua mensagem</h4>
+                        </div>
+                        <div>
+                            <hr>
+                        </div>
+                        <div class="container text-left" id="formulario">
+                            <div class="form-group">
+                                <label for="nome">Nome</label>
+                                <input type="text" class="form-control" id="nome" placeholder="Digite o nome"
+                                    [(ngModel)]="nome" maxlength="60" (click)="limpar()" required>
+                                <span *ngIf='_msgErroN'>{{_msgErroN}}</span>
                             </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="nome@exemplo.com.br"
+                                    [(ngModel)]="email" maxlength="40" (click)="limpar()" required>
+                                <span *ngIf='_msgErroE'>{{_msgErroE}}</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="mensagem">Mensagem</label>
+                                <textarea class="form-control textarea" [(ngModel)]="msg" id="mensagem"
+                                    placeholder="Escreva sua mensagem" rows="5" maxlength="400" required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary mr-5" width=""
+                                (click)="validacao()">Enviar</button>
+                            <span id="sucesso" *ngIf='_msgEnvioDados'>{{_msgEnvioDados}}</span>
+                            <span id="falha" *ngIf='_msgCampoVazio'>{{_msgCampoVazio}}</span>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+
+        <div style="height: 120px;">
         </div>
     </div>
+</div>
+
+
 </div>

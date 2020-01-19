@@ -1,6 +1,13 @@
 .navColor{
-    background-color: rgb(254, 179, 78);
+    background-color: #FFD15D;
     float: fixed;
     top: 0;
     width: 100%;
 }
+
+.text-dark {
+    margin-left: 10px;
+    color: rgb(34, 34, 34);
+    font-size: 15pt;
+}
+

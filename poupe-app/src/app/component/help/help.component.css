@@ -3,13 +3,14 @@ h2 {
     font-size: 2.5rem;
     color: black;
     text-transform: uppercase;
+    font-family: 'Roboto Slab', serif;
 }
 
 .textarea {
     resize: none;
 }
 
-.accordion-section .panel-default > .panel-heading {
+/* .accordion-section .panel-default > .panel-heading {
     border: 0;
     background: white;
     padding: 0;
@@ -26,7 +27,7 @@ h2 {
     font-style: normal;
     font-size: 3rem;
     content: "\f106";
-    color: gray;
+    color: black;
     float: right;
     margin-top: -12px;
 }
@@ -35,7 +36,36 @@ h2 {
 }
 .accordion-section .panel-default .panel-body {
     font-size: 1.2rem;
+} */
+
+.pergunta {
+    font-family: 'Roboto Slab', serif;
+    font-size: 17pt;
+    text-decoration: none;
+    
 }
+
+.resposta {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12pt;
+    text-decoration: none;
+}
+
+.title {
+    font-family: 'Roboto Slab', serif;
+    font-size: 22pt;
+    text-decoration: none;
+    margin-top: 2%;
+}
+.card-header{
+    background-color: white;
+}
+
+.card-body {
+    background-color: rgb(238, 238, 238);
+    text-align: justify;
+}
+
 h4 {
     font-size: 2.5rem;
 }
