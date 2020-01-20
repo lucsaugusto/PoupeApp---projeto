@@ -17,3 +17,13 @@ span{
 h3{
     color: black;
 }
+
+.btn{
+    color: white;
+    background-color: rgb(32, 56, 112);
+    outline-color: none;
+}
+
+.btn:hover {
+    color: #FFD15D;
+}

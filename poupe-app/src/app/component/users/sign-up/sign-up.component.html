@@ -31,7 +31,7 @@
                             <label for="inputUsername" class="no-mobile-display none-display">Endereço de
                                 e-mail</label>
                             <input type="email" class="form-control" id="email" placeholder="nome@exemplo.com.br"
-                                [(ngModel)]="user.email" maxlength="40" required>
+                                [(ngModel)]="user.email" maxlength="40" (click)="limpar()" required>
                             <span *ngIf='_msgErroEmail'>{{_msgErroEmail}}</span>
                         </div>
                         <br>
@@ -47,7 +47,7 @@
                         <div class="form-group form-group-margin">
                             <label for="nome">Senha</label>
                             <input type="password" value="" class="form-control" id="senha"
-                                placeholder="Digite sua senha" maxlength="40"[(ngModel)]="user.senha" required>
+                                placeholder="Digite sua senha" maxlength="25"[(ngModel)]="user.senha" required>
                             <span *ngIf='_msgErroSenha'>{{_msgErroSenha}}</span>
                             <span id="forte" *ngIf='_msgSenhaForte'>{{_msgSenhaForte}}</span>
                             <span id="fraca" *ngIf='_msgSenhaFraca'>{{_msgSenhaFraca}}</span>

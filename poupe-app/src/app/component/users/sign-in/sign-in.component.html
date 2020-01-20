@@ -29,7 +29,7 @@
                         <div class="form-group form-group-margin">
                             <label for="nome">Senha</label>
                             <input type="password" value="" class="form-control" id="senha"
-                                placeholder="Digite sua senha" maxlength="40" [(ngModel)]="login.senha" required>
+                                placeholder="Digite sua senha" maxlength="25" [(ngModel)]="login.senha" required>
                             <span *ngIf='_msgErroSenha'>{{_msgErroSenha}}</span>
                         </div>
 
@@ -49,7 +49,7 @@
                                 
                             </div>                       
                             <br/>                                                  
-                            <p class="izU2O">Não tem uma conta? <a href="/sign-up"><span
+                            <p class="izU2O">Não tem uma conta? <a href="/cadastrar"><span
                                class="Cadastre-se">Cadastre-se</span></a></p>
                         </div>
                     </div>

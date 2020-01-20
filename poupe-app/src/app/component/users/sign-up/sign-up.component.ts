@@ -29,6 +29,9 @@ export class SignUpComponent implements OnInit {
   private _msgConfirmaSenha: string = null;
   private _msgExisteEmail: string = null;
   private _msgEnvioDados: string = null;
+  private _msgErroE: string = null;
+  private _msgErroT: string = null;
+  private _msgCampoVazio: string;
 
   constructor(private usersService: UsersService) { }
 
@@ -58,7 +61,8 @@ export class SignUpComponent implements OnInit {
 
   validacao() {
     if (this.user.nome == "" || this.user.email == "" || this.user.telefone == null || this.user.senha == "" || this.user.senhaConf == "") {
-      alert('Preencha todos os campos');
+      this._msgCampoVazio = "Atenção! Preencha Todos os campos";
+      this._msgEnvioDados = "";
     }
     if (!this.filtro.test(this.user.nome) || this.user.nome.indexOf(" ") < 1) {
       this.user.nome = "";
@@ -109,10 +113,22 @@ export class SignUpComponent implements OnInit {
         },
           error => {
             console.log(`Erro cod: ${error.status}`);
+            this._msgErroEmail = "O email já está cadastrado.";
           })
       }
       else
         this._msgErroEmail = `O email já existe`;
+    }
+  }
+
+  limpar() {
+    if (this._msgErroEmail != "") {
+      this.user.email = "";
+    }
+    if (this._msgErroEmail != "" || this._msgEnvioDados != "" || this._msgCampoVazio != "") {
+      this._msgCampoVazio = "";
+      this._msgErroEmail = "";
+      this._msgEnvioDados = "";
     }
   }
 
