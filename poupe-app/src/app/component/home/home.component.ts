@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     if (Globals.user === undefined) {
-      this.router.navigate(['sign-in']);
+      this.router.navigate(['login']);
     }
     else {
       this.user = Globals.user;

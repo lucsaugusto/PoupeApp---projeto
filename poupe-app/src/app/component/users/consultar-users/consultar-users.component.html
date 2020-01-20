@@ -1,22 +1,7 @@
-<br>
-<br>
-<br>
-<div class="container mt-5">
-    <table>
-        <tr>
-            <th></th>
-            <th> </th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
+<div class="container">
 
-        </tr>
-        <tr *ngFor="let user of users">
-
-        </tr>
-    </table>
+    <div style="height: 100px;">
+    </div>
 
     <table class="table col-12 text-center">
         <thead class="thead-dark">
@@ -37,11 +22,10 @@
                 <td>{{user.email}}</td>
                 <td>{{user.telefone}}</td>
                 <td>{{user.senha}}</td>
-                <td><a [routerLink]="['/alterar-users', user.idUsuario]"><i class="fas fa-pen-square" width='50px'
-                            height='50px'></i></a>
+                <td><a [routerLink]="['/editar', user.idUsuario]"><i class="fas fa-pen-square"></i></a>
                 </td>
-                <td><a [routerLink]="['/remover-users', user.idUsuario]"><i class="fa fa-eraser"></i></a> </td>
+                <td><a [routerLink]="['/remover', user.idUsuario]"><i class="fa fa-eraser"></i></a> </td>
             </tr>
         </tbody>
     </table>
-</div>
+    <div>

@@ -2,10 +2,13 @@ table {
     width: 100%;
 }
 
-.fa-pencil {
-    color: green;
+.fa-pen-square {
+    color: rgb(0, 81, 255);
+
+    font-size: x-large;
 }
 
 .fa-eraser {
     color: red;
+    font-size: x-large;
 }

@@ -26,7 +26,7 @@ export class PostsComponent implements OnInit {
   ngOnInit() {
     this.btnClickAll();
     if (Globals.user === undefined) {
-      this.router.navigate(['sign-in']);
+      this.router.navigate(['login']);
     }
     else {
       this.user = Globals.user;

@@ -6,14 +6,17 @@
 
             <div class="bg-white rounded shadow-sm pb-3 px-4">
 
-                <div class="container text-center" id="formulario">
-                    <h3 class="display-4 mb-3 mt-3">Seja bem vindo!</h3>
-                    <h3 class="display-4 mb-3 mt-3">{{user.nome}}</h3>
+                <div class="text-center p-2 pt-0" id="formulario">
+                    <h3 class="display-4 mt-3 title">Seja bem vindo!</h3>
+                    <h3 class="display-4 mb-3 title">{{user.nome}}</h3>
+                    <div class="mt-4">
+                        <hr>
+                    </div>
                     <img class="rounded" src="assets/bem_vindos.gif" alt="" width="650">
                     <div id="sign-up" class="form-horizontal ">
                         <br />
                         <div class="">
-                            <button type="submit" class="btn btn-primary" width="" [routerLink]="'/posts'"> Vamos
+                            <button type="submit" class="btn" width="" [routerLink]="'/posts'"> Vamos
                                 Poupar?
                             </button>
                             <br>
@@ -21,8 +24,6 @@
                             <span id="falha" *ngIf='_msgErroEmail'>{{_msgErroEmail}}</span>
                             <span id="falha" *ngIf='_msgCampoVazio'>{{_msgCampoVazio}}</span>
 
-                            <div class="bg-white rounded shadow-sm py-5 px-4"><img src="assets/silhueta.jpg" alt=""
-                                    width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"> </div>
                         </div>
                     </div>
                 </div>

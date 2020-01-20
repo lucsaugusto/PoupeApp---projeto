@@ -1,3 +1,10 @@
 .bg-white{
     background-color: white;
 }
+
+h1, h2 {
+    font-family: 'Roboto Slab', serif;
+    font-size: 40pt;
+    text-decoration: none;
+    color: rgb(58, 58, 58);
+}

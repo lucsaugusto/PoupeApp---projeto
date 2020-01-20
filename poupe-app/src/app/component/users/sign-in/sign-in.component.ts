@@ -46,7 +46,7 @@ export class SignInComponent implements OnInit {
           this.login.email = "";
           this.login.senha = "";
           console.log(`Erro cod: ${error.status}`);
-          this.router.navigate(['sign-in']);
+          this.router.navigate(['login']);
         });
     }
   }

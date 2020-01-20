@@ -17,6 +17,7 @@ footer a {
 .social-pet li {
     display: inline-block;
     margin-right: 10px;
+    
 }
 
 .social-pet li a {
@@ -53,9 +54,11 @@ footer a {
 }
 
 .recent-post li {
-    display: block;
+    display: inline-block;
     color: #ccc;
-    margin-bottom: 25px;
+
+    margin-left: -15%;
+    list-style: none;
 }
 
 .recent-post li label {
@@ -75,7 +78,8 @@ footer .input-group-addon {
 }
 
 .f-address li {
-    display: inline-block;
+    margin-left: -15%;
+    list-style: none;
 }
 
 .f-address li i {

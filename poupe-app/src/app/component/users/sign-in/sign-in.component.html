@@ -1,9 +1,11 @@
 
 <div class="container-fluid bg-light">
+    <div style="height: 120px;">
+    </div>
 
-    <div class="row py-5 mt-5 text-center justify-content-around">
+    <div class="row py-5 text-center justify-content-around">
 
-        <div class="col-xl-4 col-sm-2 mb-5">
+        <div class="col-xl-4 col-sm-2">
 
             <div class="bg-white rounded shadow-sm pb-3 px-4">
                 <div class="row ml-1 m-2 text-left" id="titulo">
@@ -39,7 +41,7 @@
                                 </label>  
                             
                             <div class="">
-                                <button type="submit" class="btn btn-primary mr-5" width="" (click)="fazerLogin()"> Entrar </button>
+                                <button type="submit" class="btn mr-5" width="" (click)="fazerLogin()"> Entrar </button>
                                 <br>
                                 <span id ="sucesso" *ngIf='_msgEnvioDados'>{{_msgEnvioDados}}</span>
                                 <span id ="falha" *ngIf='_msgErroEmail'>{{_msgErroEmail}}</span>
@@ -55,3 +57,6 @@
             </div>
         </div>
     </div>
+    <div style="height: 100px;">
+    </div>
+</div>

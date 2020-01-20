@@ -12,18 +12,18 @@ import { HomeComponent } from './component/home/home.component';
 import { HelpComponent } from './component/help/help.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'sign-in', pathMatch: 'full' },
-  {path: 'contact', component: ContactComponent},
-  {path: 'about-us', component: AboutUsComponent},
-  {path: 'posts', component: PostsComponent},
-  {path: 'sign-in', component: SignInComponent},
-  {path: 'sign-up', component: SignUpComponent},
-  {path: 'alterar-users/:id', component: AlterarUsersComponent},
-  {path: 'consultar-users', component: ConsultarUsersComponent},
-  {path: 'inserir-users', component: InserirUsersComponent},
-  {path: 'remover-users/:id', component: InserirUsersComponent},
+  {path: '', redirectTo: 'login', pathMatch: 'full' },
+  {path: 'contato', component: ContactComponent},
+  {path: 'sobre', component: AboutUsComponent},
+  {path: 'feed', component: PostsComponent},
+  {path: 'login', component: SignInComponent},
+  {path: 'cadastrar', component: SignUpComponent},
+  {path: 'editar/:id', component: AlterarUsersComponent},
+  {path: 'consultar', component: ConsultarUsersComponent},
+  {path: 'inserir', component: InserirUsersComponent},
+  {path: 'remover/:id', component: InserirUsersComponent},
   {path: 'home', component: HomeComponent},
-  {path: 'help', component: HelpComponent}
+  {path: 'ajuda', component: HelpComponent}
 ];
 
 @NgModule({

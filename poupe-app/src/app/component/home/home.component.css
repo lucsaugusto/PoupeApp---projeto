@@ -1,0 +1,16 @@
+.title {
+    font-family: 'Roboto Slab', serif;
+    font-size: 30pt;
+    text-decoration: none;
+    margin-top: 0%;
+}
+
+.btn{
+    color: white;
+    background-color: rgb(32, 56, 112);
+    outline-color: none;
+}
+
+.btn:hover {
+    color: #FFD15D;
+}
