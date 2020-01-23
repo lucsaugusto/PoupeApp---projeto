@@ -1,57 +1,85 @@
 <div class="bg-light">
-    <br />
-    <br />
-    <br />
-    <div class="container col-4 mt-5">
-        <div class="input-group mb-5">
-            <input id="txtPostId" type="number" [(ngModel)]="idPostagem" class="form-control" placeholder="Digite o id"
-                aria-label="Recipient's username" aria-describedby="button-addon2">
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary bg-dark text-light" type="button" id="button-addon2"
-                    (click)="btnClickId()">Consultar</button>
-            </div>
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary bg-dark text-light" type="button" id="button-addon3"
-                    (click)="btnClickAll()">Consultar todos</button>
-            </div>
-        </div>
-    </div>
 
-    <div class="container col-10 mb-5" *ngIf="showAll == true">
-        <div class="card m-3 mb-5 bg-white rounded shadow-sm" style="max-width: 80rem;" *ngFor="let post of posts">
-            <div class="p-2"><img class="card-img-top" src="{{post.linkimg}}" alt="Card image cap"></div>
-            <div class="card-header bg-light">
-                <h2 class="font-weight-bold text-dark">Post {{post.idPostagem}}</h2>
-            </div>
-            <div class="card-body text-info">
-                <h5 class="card-title text-dark">Id Postagem: <span class="text-secondary">{{post.idPostagem}}</span>
-                </h5>
-                <h5 class="card-title text-dark">Título: <span class="text-secondary">{{post.titulo}}</span></h5>
-                <h5 class="card-title text-dark">Texto: <span class="text-secondary">{{post.texto}}</span></h5>
-                <h5 class="card-title text-dark">Link Img: <span class="text-secondary">{{post.linkimg}}</span></h5>
-                <h5 class="card-title text-dark">Data de Inclusão: <span
-                        class="text-secondary">{{post.dataInclusao}}</span></h5>
-            </div>
-        </div>
-    </div>
+    <div class="container-fluid bg-light">
 
-    <div class="container col-10 mb-5" *ngIf="showId == true">
-        <div class="card m-3 mb-5 bg-white rounded shadow-sm" style="max-width: 80rem;">
-            <div class="p-2"><img class="card-img-top" src="{{post.linkimg}}" alt="Card image cap"></div>
-            <div class="card-header bg-light">
-                <h2 class="font-weight-bold text-dark">Post {{post.idPostagem}}</h2>
-            </div>
-            <div class="card-body text-info">
-                <h5 class="card-title text-dark">Id Postagem: <span class="text-secondary">{{post.idPostagem}}</span>
-                </h5>
-                <h5 class="card-title text-dark">Título: <span class="text-secondary">{{post.titulo}}</span></h5>
-                <h5 class="card-title text-dark">Texto: <span class="text-secondary">{{post.texto}}</span></h5>
-                <h5 class="card-title text-dark">Link Img: <span class="text-secondary">{{post.linkimg}}</span></h5>
-                <h5 class="card-title text-dark">Data de Inclusão: <span
-                        class="text-secondary">{{post.dataInclusao}}</span></h5>
+        <div class="row py-5 mt-5 text-center justify-content-around">
+
+            <div class="col-xl-5 col-sm-3 mb-5">
+
+                <div class="bg-white rounded shadow-sm pb-3 px-4">
+                    <div class="row ml-1 m-2 text-left" id="titulo">
+                        <h3 class="title">Faça sua Postagem</h3>
+                    </div>
+                    <div>
+                        <hr>
+                    </div>
+                    <div class="container text-left" id="formulario">
+                        <div class="form-group">
+                            <label for="nome">Nome do produto</label>
+                            <input type="text" class="form-control" id="nome" placeholder="Nome do produto." [(ngModel)]="nome" maxlength="60" (click)="limpar()" required>
+                            <span *ngIf='_msgErroN'>{{_msgErroN}}</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="imagem">URL da imagem</label>
+                            <input type="imagem" class="form-control" id="imagem" placeholder="Insira a URL da imagem." [(ngModel)]="imagem" maxlength="40" (click)="limpar()" required>
+                            <span *ngIf='_msgErroE'>{{_msgErroE}}</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="imagem">Data promoção</label>
+                            <input type="imagem" class="form-control" id="imagem" placeholder="Digite a data da promoção." [(ngModel)]="imagem" maxlength="40" (click)="limpar()" required>
+                            <span *ngIf='_msgErroE'>{{_msgErroE}}</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="descrição">Descrição da Promoção</label>
+                            <textarea class="form-control textarea" [(ngModel)]="msg" id="mensagem" placeholder="Escreva mais informações sobre o produto.                Ex.:Local, preço e quantidade. " rows="5" maxlength="400" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn mr-5" width="" (click)="validacao()">Postar</button>
+                        <span id="sucesso" *ngIf='_msgEnvioDados'>{{_msgEnvioDados}}</span>
+                        <span id="falha" *ngIf='_msgCampoVazio'>{{_msgCampoVazio}}</span>
+                    </div>
+                </div>
             </div>
         </div>
+        <div class="container col-4 mt-5">
+            <div class="input-group mb-5">
+                <input id="txtPostId" type="number" [(ngModel)]="idPostagem" class="form-control" placeholder="Digite o id" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary bg-dark text-light" type="button" id="button-addon2" (click)="btnClickId()">Consultar</button>
+                </div>
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary bg-dark text-light" type="button" id="button-addon3" (click)="btnClickAll()">Consultar todos</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="container col-10 mb-5" *ngIf="showAll == true">
+            <div class="card m-3 mb-5 bg-white rounded shadow-sm" style="max-width: 80rem;" *ngFor="let post of posts">
+                <div class="p-2"><img class="card-img-top" src="{{post.linkimg}}" alt="Card image cap"></div>
+                <div class="card-header bg-light">
+                    <h2 class="font-weight-bold text-dark col-md-6">{{post.titulo}}</h2>
+
+                    <p class="card-title text-dark" style="text-align: right">Data de Postagem: <span class="text-secondary">{{post.dataInclusao}}</span></p>
+                </div>
+                <div class="card-body text-info">
+                    <h5 class="card-title text-dark">Texto: <span class="text-secondary">{{post.texto}}</span></h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="container col-10 mb-5" *ngIf="showId == true">
+            <div class="card m-3 mb-5 bg-white rounded shadow-sm" style="max-width: 80rem;">
+                <div class="p-2"><img class="card-img-top" src="{{post.linkimg}}" alt="Card image cap"></div>
+
+                <div class="card-header bg-light">
+                    <h2 class="font-weight-bold text-dark col-md-6">{{post.titulo}}</h2>
+                    <p class="card-title text-dark" style="text-align: right">Data de Postagem: <span class="text-secondary">{{post.dataInclusao}}</span></p>
+                </div>
+                <div class="card-body text-info">
+                    <h5 class="card-title text-dark">Texto: <span class="text-secondary">{{post.texto}}</span></h5>
+                </div>
+            </div>
+        </div>
+        <br />
+        <br />
     </div>
-    <br/>
-    <br/>
-</div>
