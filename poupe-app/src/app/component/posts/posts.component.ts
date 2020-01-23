@@ -31,6 +31,7 @@ export class PostsComponent implements OnInit {
     else {
       this.user = Globals.user;
     }
+    
   }
 
   //Começa a minha aplicação
@@ -50,4 +51,19 @@ export class PostsComponent implements OnInit {
     })
   }
 
+  enviarPost(){
+    this.postService.insert(this.post).subscribe((postOut: Posts)=> {
+      this.post = postOut;
+    });
+  }
+
+  editarPost() {
+    this.postService.insert(this.post).subscribe((postOut: Posts)=> {
+      this.post = postOut;
+    });
+  }
+
+  editar() {
+    
+  }
 }

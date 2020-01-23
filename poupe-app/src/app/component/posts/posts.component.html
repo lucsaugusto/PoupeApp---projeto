@@ -16,39 +16,50 @@
                     <div class="container text-left" id="formulario">
                         <div class="form-group">
                             <label for="nome">Nome do produto</label>
-                            <input type="text" class="form-control" id="nome" placeholder="Nome do produto." [(ngModel)]="nome" maxlength="60" (click)="limpar()" required>
+                            <input type="text" class="form-control" id="nome" placeholder="Nome do produto."
+                                [(ngModel)]="titulo" maxlength="60" (click)="limpar()" required>
                             <span *ngIf='_msgErroN'>{{_msgErroN}}</span>
                         </div>
                         <div class="form-group">
                             <label for="imagem">URL da imagem</label>
-                            <input type="imagem" class="form-control" id="imagem" placeholder="Insira a URL da imagem." [(ngModel)]="imagem" maxlength="40" (click)="limpar()" required>
+                            <input type="imagem" class="form-control" id="linkimg" placeholder="Insira a URL da imagem."
+                                [(ngModel)]="imagem" maxlength="200" (click)="limpar()" required>
                             <span *ngIf='_msgErroE'>{{_msgErroE}}</span>
                         </div>
                         <div class="form-group">
                             <label for="imagem">Data promoção</label>
-                            <input type="imagem" class="form-control" id="imagem" placeholder="Digite a data da promoção." [(ngModel)]="imagem" maxlength="40" (click)="limpar()" required>
+                            <input type="text" class="form-control" id="imagem"
+                                placeholder="Digite a data da promoção." [(ngModel)]="dataInclusao" maxlength="10"
+                                (click)="limpar()" required>
                             <span *ngIf='_msgErroE'>{{_msgErroE}}</span>
                         </div>
                         <div class="form-group">
                             <label for="descrição">Descrição da Promoção</label>
-                            <textarea class="form-control textarea" [(ngModel)]="msg" id="mensagem" placeholder="Escreva mais informações sobre o produto.                Ex.:Local, preço e quantidade. " rows="5" maxlength="400" required></textarea>
+                            <textarea class="form-control textarea" [(ngModel)]="texto" id="mensagem"
+                                placeholder="Escreva mais informações sobre o produto.                Ex.:Local, preço e quantidade. "
+                                rows="5" maxlength="400" required></textarea>
                         </div>
 
-                        <button type="submit" class="btn mr-5" width="" (click)="validacao()">Postar</button>
-                        <span id="sucesso" *ngIf='_msgEnvioDados'>{{_msgEnvioDados}}</span>
-                        <span id="falha" *ngIf='_msgCampoVazio'>{{_msgCampoVazio}}</span>
+                        <div class="form-group">
+                            <button type="submit" class="btn mr-5" width="" (click)="enviarPost()">Postar</button>
+                            <button type="submit" class="btn ml-5" width="" (click)="editarPost()">Editar</button>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
         <div class="container col-4 mt-5">
             <div class="input-group mb-5">
-                <input id="txtPostId" type="number" [(ngModel)]="idPostagem" class="form-control" placeholder="Digite o id" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <input id="txtPostId" type="number" [(ngModel)]="idPostagem" class="form-control"
+                    placeholder="Digite o id" aria-label="Recipient's username" aria-describedby="button-addon2">
                 <div class="input-group-append">
-                    <button class="btn btn-outline-secondary bg-dark text-light" type="button" id="button-addon2" (click)="btnClickId()">Consultar</button>
+                    <button class="btn btn-outline-secondary bg-dark text-light" type="button" id="button-addon2"
+                        (click)="btnClickId()">Consultar</button>
                 </div>
                 <div class="input-group-append">
-                    <button class="btn btn-outline-secondary bg-dark text-light" type="button" id="button-addon3" (click)="btnClickAll()">Consultar todos</button>
+                    <button class="btn btn-outline-secondary bg-dark text-light" type="button" id="button-addon3"
+                        (click)="btnClickAll()">Consultar todos</button>
                 </div>
             </div>
         </div>
@@ -59,7 +70,11 @@
                 <div class="card-header bg-light">
                     <h2 class="font-weight-bold text-dark col-md-6">{{post.titulo}}</h2>
 
-                    <p class="card-title text-dark" style="text-align: right">Data de Postagem: <span class="text-secondary">{{post.dataInclusao}}</span></p>
+                    <p class="card-title text-dark" style="text-align: right">Data de Postagem: <span
+                            class="text-secondary">{{post.dataInclusao}}</span></p>
+
+                    <!-- <button type="button" class="btn mr-5" width="" (click)="editar()">Postar</button> -->
+                    <a [routerLink]="['/editar', user.idUsuario]"><i class="fas fa-pen-square" (click) = "editar"></i></a>
                 </div>
                 <div class="card-body text-info">
                     <h5 class="card-title text-dark">Texto: <span class="text-secondary">{{post.texto}}</span></h5>
@@ -73,7 +88,8 @@
 
                 <div class="card-header bg-light">
                     <h2 class="font-weight-bold text-dark col-md-6">{{post.titulo}}</h2>
-                    <p class="card-title text-dark" style="text-align: right">Data de Postagem: <span class="text-secondary">{{post.dataInclusao}}</span></p>
+                    <p class="card-title text-dark" style="text-align: right">Data de Postagem: <span
+                            class="text-secondary">{{post.dataInclusao}}</span></p>
                 </div>
                 <div class="card-body text-info">
                     <h5 class="card-title text-dark">Texto: <span class="text-secondary">{{post.texto}}</span></h5>
