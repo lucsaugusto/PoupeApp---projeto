@@ -16,12 +16,13 @@ const routes: Routes = [
   {path: 'contato', component: ContactComponent},
   {path: 'sobre', component: AboutUsComponent},
   {path: 'feed', component: PostsComponent},
+  {path: 'feed/:id', component: PostsComponent},
   {path: 'login', component: SignInComponent},
   {path: 'cadastrar', component: SignUpComponent},
   {path: 'editar/:id', component: AlterarUsersComponent},
   {path: 'consultar', component: ConsultarUsersComponent},
   {path: 'inserir', component: InserirUsersComponent},
-  {path: 'remover/:id', component: InserirUsersComponent},
+  {path: 'remover/:id', component: PostsComponent},
   {path: 'home', component: HomeComponent},
   {path: 'ajuda', component: HelpComponent}
 ];

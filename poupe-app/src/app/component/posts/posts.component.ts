@@ -3,7 +3,7 @@ import { PostsService } from 'src/app/service/posts.service';
 import { Posts } from 'src/app/model/posts';
 import { Globals } from 'src/app/model/globals';
 import { Users } from 'src/app/model/users';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-posts',
@@ -13,17 +13,19 @@ import { Router } from '@angular/router';
 })
 export class PostsComponent implements OnInit {
   //Atributos
+  id:number;
   user: Users;
   posts: Array<Posts> = new Array<Posts>();
-  post: Posts = new Posts(0, '', '', '', 0);
+  post: Posts = new Posts(0, '', '', '', '');
   idPostagem: number;
   showId: boolean
   showAll: boolean
   //Construtor
-  constructor(private postService: PostsService, private router: Router) { }
+  constructor(private postService: PostsService, private router: Router, private route: ActivatedRoute,) { }
 
   //É chamado assim que baixar todos os componentes e serviços na maquina do usuario;
   ngOnInit() {
+    this.id = this.route.snapshot.params["id"];
     this.btnClickAll();
     if (Globals.user === undefined) {
       this.router.navigate(['login']);
@@ -48,7 +50,7 @@ export class PostsComponent implements OnInit {
       this.post = postOut;
       this.showId = true;
       this.showAll = false;
-    })
+    });
   }
 
   enviarPost(){
@@ -58,12 +60,15 @@ export class PostsComponent implements OnInit {
   }
 
   editarPost() {
-    this.postService.insert(this.post).subscribe((postOut: Posts)=> {
+    this.postService.update(this.post).subscribe((postOut: Posts)=> {
       this.post = postOut;
+      this.router.navigate(['feed']);
     });
   }
 
-  editar() {
-    
+  editar(id: number) {
+    this.postService.getById(id).subscribe((postOut: Posts) => {
+      this.post = postOut;
+    });
   }
 }

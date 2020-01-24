@@ -1,3 +1,4 @@
+import { PostsService } from 'src/app/service/posts.service';
 import { SignInComponent } from './component/users/sign-in/sign-in.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -15,7 +16,6 @@ import { ConsultarUsersComponent } from './component/users/consultar-users/consu
 import { InserirUsersComponent } from './component/users/inserir-users/inserir-users.component';
 import { AlterarUsersComponent } from './component/users/alterar-users/alterar-users.component';
 import { RemoverUsersComponent } from './component/users/remover-users/remover-users.component';
-import { PostagemService } from './service/postagem.service';
 import { UsersService } from './service/users/users.service';
 import { HomeComponent } from './component/home/home.component';
 import { HelpComponent } from './component/help/help.component';
@@ -45,7 +45,7 @@ import { HelpComponent } from './component/help/help.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [UsersService, PostagemService],
+  providers: [UsersService, PostsService],
   bootstrap: [AppComponent]
 })
   

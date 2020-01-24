@@ -17,25 +17,25 @@
                         <div class="form-group">
                             <label for="nome">Nome do produto</label>
                             <input type="text" class="form-control" id="nome" placeholder="Nome do produto."
-                                [(ngModel)]="titulo" maxlength="60" (click)="limpar()" required>
+                                [(ngModel)]="post.titulo" maxlength="60" (click)="limpar()" required>
                             <span *ngIf='_msgErroN'>{{_msgErroN}}</span>
                         </div>
                         <div class="form-group">
                             <label for="imagem">URL da imagem</label>
-                            <input type="imagem" class="form-control" id="linkimg" placeholder="Insira a URL da imagem."
-                                [(ngModel)]="imagem" maxlength="200" (click)="limpar()" required>
+                            <input type="text" class="form-control" id="post.linkimg" placeholder="Insira a URL da imagem."
+                                [(ngModel)]="post.linkimg" maxlength="200" (click)="limpar()" required>
                             <span *ngIf='_msgErroE'>{{_msgErroE}}</span>
                         </div>
                         <div class="form-group">
                             <label for="imagem">Data promoção</label>
                             <input type="text" class="form-control" id="imagem"
-                                placeholder="Digite a data da promoção." [(ngModel)]="dataInclusao" maxlength="10"
+                                placeholder="Digite a data da promoção." [(ngModel)]="post.dataInclusao" maxlength="10"
                                 (click)="limpar()" required>
                             <span *ngIf='_msgErroE'>{{_msgErroE}}</span>
                         </div>
                         <div class="form-group">
                             <label for="descrição">Descrição da Promoção</label>
-                            <textarea class="form-control textarea" [(ngModel)]="texto" id="mensagem"
+                            <textarea class="form-control textarea" [(ngModel)]="post.texto" id="mensagem"
                                 placeholder="Escreva mais informações sobre o produto.                Ex.:Local, preço e quantidade. "
                                 rows="5" maxlength="400" required></textarea>
                         </div>
@@ -64,17 +64,17 @@
             </div>
         </div>
 
-        <div class="container col-10 mb-5" *ngIf="showAll == true">
-            <div class="card m-3 mb-5 bg-white rounded shadow-sm" style="max-width: 80rem;" *ngFor="let post of posts">
+        <div class="container col-6 mb-5" *ngIf="showAll == true">
+            <div class="card m-3 mb-5 bg-white rounded shadow-sm" style="max-width: 60rem;" *ngFor="let post of posts">
                 <div class="p-2"><img class="card-img-top" src="{{post.linkimg}}" alt="Card image cap"></div>
-                <div class="card-header bg-light">
-                    <h2 class="font-weight-bold text-dark col-md-6">{{post.titulo}}</h2>
+                <div class="card-header bg-light row">
+                    <h2 class="font-weight-bold text-dark">{{post.titulo}}</h2>
 
                     <p class="card-title text-dark" style="text-align: right">Data de Postagem: <span
                             class="text-secondary">{{post.dataInclusao}}</span></p>
 
                     <!-- <button type="button" class="btn mr-5" width="" (click)="editar()">Postar</button> -->
-                    <a [routerLink]="['/editar', user.idUsuario]"><i class="fas fa-pen-square" (click) = "editar"></i></a>
+                    <a [routerLink]="['/feed', post.idPostagem]"><i class="fas fa-pen-square" (click) = "editar(post.id)"></i></a>
                 </div>
                 <div class="card-body text-info">
                     <h5 class="card-title text-dark">Texto: <span class="text-secondary">{{post.texto}}</span></h5>
@@ -82,8 +82,8 @@
             </div>
         </div>
 
-        <div class="container col-10 mb-5" *ngIf="showId == true">
-            <div class="card m-3 mb-5 bg-white rounded shadow-sm" style="max-width: 80rem;">
+        <div class="container col-6 mb-5" *ngIf="showId == true">
+            <div class="card m-3 mb-5 bg-white rounded shadow-sm" style="max-width: 60rem;">
                 <div class="p-2"><img class="card-img-top" src="{{post.linkimg}}" alt="Card image cap"></div>
 
                 <div class="card-header bg-light">
