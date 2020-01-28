@@ -13,27 +13,26 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class PostsComponent implements OnInit {
   //Atributos
-  id:number;
   user: Users;
   posts: Array<Posts> = new Array<Posts>();
-  post: Posts = new Posts(0, '', '', '', '');
+  post: Posts = new Posts();
   idPostagem: number;
   showId: boolean
   showAll: boolean
   //Construtor
-  constructor(private postService: PostsService, private router: Router, private route: ActivatedRoute,) { }
+  constructor(private postService: PostsService, private router: Router, private route: ActivatedRoute, ) { }
 
   //É chamado assim que baixar todos os componentes e serviços na maquina do usuario;
   ngOnInit() {
-    this.id = this.route.snapshot.params["id"];
     this.btnClickAll();
+
     if (Globals.user === undefined) {
       this.router.navigate(['login']);
     }
     else {
       this.user = Globals.user;
     }
-    
+
   }
 
   //Começa a minha aplicação
@@ -53,22 +52,21 @@ export class PostsComponent implements OnInit {
     });
   }
 
-  enviarPost(){
-    this.postService.insert(this.post).subscribe((postOut: Posts)=> {
+  enviarPost() {
+    this.postService.insert(this.post).subscribe((postOut: Posts) => {
       this.post = postOut;
+      this.post.titulo = "";
+      this.post.texto = "";
+      this.post.linkimg = "";
+      this.post.dataInclusao = "";
     });
+
   }
 
   editarPost() {
-    this.postService.update(this.post).subscribe((postOut: Posts)=> {
+    this.postService.update(this.post).subscribe((postOut: Posts) => {
       this.post = postOut;
       this.router.navigate(['feed']);
-    });
-  }
-
-  editar(id: number) {
-    this.postService.getById(id).subscribe((postOut: Posts) => {
-      this.post = postOut;
     });
   }
 }

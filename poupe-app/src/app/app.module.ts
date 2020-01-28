@@ -10,7 +10,7 @@ import { FooterComponent } from './component/footer/footer.component';
 import { FormsModule } from '@angular/forms'
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { PostsComponent } from './component/posts/posts.component';
+import { PostsComponent } from './component/posts-pack/posts/posts.component';
 import { SignUpComponent } from './component/users/sign-up/sign-up.component';
 import { ConsultarUsersComponent } from './component/users/consultar-users/consultar-users.component';
 import { InserirUsersComponent } from './component/users/inserir-users/inserir-users.component';
@@ -19,6 +19,8 @@ import { RemoverUsersComponent } from './component/users/remover-users/remover-u
 import { UsersService } from './service/users/users.service';
 import { HomeComponent } from './component/home/home.component';
 import { HelpComponent } from './component/help/help.component';
+import { ShareService } from './service/share.service';
+import { AlterarPostsComponent } from './component/posts-pack/alterar-posts/alterar-posts.component';
 
 
 
@@ -37,7 +39,8 @@ import { HelpComponent } from './component/help/help.component';
     RemoverUsersComponent,
     SignInComponent,
     HomeComponent,
-    HelpComponent
+    HelpComponent,
+    AlterarPostsComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,7 @@ import { HelpComponent } from './component/help/help.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [UsersService, PostsService],
+  providers: [UsersService, PostsService, ShareService],
   bootstrap: [AppComponent]
 })
   

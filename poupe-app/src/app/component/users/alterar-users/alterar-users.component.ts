@@ -32,11 +32,11 @@ export class AlterarUsersComponent implements OnInit {
   private _msgnovoEmail: string = null;
   private _msgEnvioDados: string = null;
 
-  constructor(private route: ActivatedRoute,private usersService: UsersService) { }
+  constructor(private route: ActivatedRoute, private usersService: UsersService) { }
 
   ngOnInit() {
-    let id:number = this.route.snapshot.params["id"];
-    if(id == undefined){
+    let id: number = this.route.snapshot.params["id"];
+    if (id == undefined) {
       this.novo = true;
     } else {
       this.findById(id);
@@ -44,9 +44,9 @@ export class AlterarUsersComponent implements OnInit {
     }
   }
 
-  findById(id: number){
-    this.usersService.getById(id).subscribe((user: Users) =>{
-     this.user = user; 
+  findById(id: number) {
+    this.usersService.getById(id).subscribe((user: Users) => {
+      this.user = user;
     }, err => {
       console.log(`Erro cod: ${err.status}`);
     });
@@ -111,53 +111,20 @@ export class AlterarUsersComponent implements OnInit {
     }
 
     if (this.user.nome != "" && this.user.email != "" && this.user.telefone != null && this.user.senha != "" && this.user.senhaConf != "") {
-      this.verificaEmail();
-      if (this.novo) {
-        this.usersService.insert(this.user).subscribe(response => {
-          this.salvar();
-          this._msgEnvioDados = "Dados enviados com sucesso!";
-          this.user.nome = "";
-          this.user.email = "";
-          this.user.telefone = null;
-          this.user.senha = "";
-          this.user.senhaConf = "";
-          this._msgSenhaForte = "";
-          this._msgSenhaFraca = "";
-          this._msgErroEmail = "";
-        },
-          error => {
-            console.log(`Erro cod: ${error.status}`);
-          })
-      }
-    }
-  }
-
-  verificaEmail() {
-    this.usersService.getAll().subscribe((lista: Users[]) => {
-      this.users = lista;
-    }, error => {
-      console.log(`Erro cod: ${error.status}`);
-    });
-
-    this.users.forEach(element => {
-      this.usersService.getById(element.idUsuario).subscribe();
-      if (this.user.email === element.email) {
-        this.novo = false;
-      }
-    });
-  }
-
-
-  salvar(){
-    if(this.novo){
-      this.usersService.insert(this.user).subscribe((user: Users) =>{
-        this.user = user;
-        this.novo = false;
-      });
-    } else {
-      this.usersService.update(this.user).subscribe((user: Users) =>{
-        this.user = user;
-      });
+      this.usersService.update(this.user).subscribe(response => {
+        this._msgEnvioDados = "Dados enviados com sucesso!";
+        this.user.nome = "";
+        this.user.email = "";
+        this.user.telefone = null;
+        this.user.senha = "";
+        this.user.senhaConf = "";
+        this._msgSenhaForte = "";
+        this._msgSenhaFraca = "";
+        this._msgErroEmail = "";
+      },
+        error => {
+          console.log(`Erro cod: ${error.status}`);
+        })
     }
   }
 }

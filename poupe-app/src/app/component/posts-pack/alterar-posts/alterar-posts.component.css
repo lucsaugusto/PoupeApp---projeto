@@ -1,0 +1,21 @@
+#data {
+    text-align: right;
+}
+
+.btn {
+    color: white;
+    background-color: rgb(32, 56, 112);
+    outline-color: none;
+}
+
+#post-img {
+    width: 100% !important;
+    height:auto !important;
+    overflow: hidden !important;
+}
+
+.fit-image{
+    width: 100%;
+    object-fit: cover;
+    max-height: 500px; /* only if you want fixed height */
+}

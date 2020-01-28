@@ -1,0 +1,112 @@
+<div class="container-fluid bg-light align-content-center">
+
+    <div class="container col-lg-6 col-md-8 col-10 py-5 mt-5 text-center justify-content-around">
+
+        <div class="bg-white rounded shadow-sm pb-1 px-4">
+            <div class="row ml-1 m-2 text-left justify-content-between px-1" id="titulo">
+                <h3 class="title mt-3">Faça sua Postagem</h3>
+                <button class="btn ml-5 mt-3 h-50" type="button" data-toggle="collapse" data-target="#collapseExample"
+                    aria-expanded="false" aria-controls="collapseExample">Novo</button>
+            </div>
+            <div>
+                <hr>
+            </div>
+
+            <div class="collapse" id="collapseExample">
+                <div class="container text-left" id="formulario">
+                    <div class="form-group">
+                        <label for="nome">Nome do produto</label>
+                        <input type="text" class="form-control" id="nome" placeholder="Nome do produto."
+                            [(ngModel)]="post.titulo" maxlength="60" (click)="limpar()" required>
+                        <span *ngIf='_msgErroN'>{{_msgErroN}}</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="imagem">URL da imagem</label>
+                        <input type="text" class="form-control" id="post.linkimg" placeholder="Insira a URL da imagem."
+                            [(ngModel)]="post.linkimg" maxlength="200" (click)="limpar()" required>
+                        <span *ngIf='_msgErroE'>{{_msgErroE}}</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="imagem">Data promoção</label>
+                        <input type="text" class="form-control" id="imagem" placeholder="Digite a data da promoção."
+                            [(ngModel)]="post.dataInclusao" maxlength="10" (click)="limpar()" required>
+                        <span *ngIf='_msgErroE'>{{_msgErroE}}</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="descrição">Descrição da Promoção</label>
+                        <textarea class="form-control textarea" [(ngModel)]="post.texto" id="mensagem"
+                            placeholder="Escreva mais informações sobre o produto.                Ex.:Local, preço e quantidade. "
+                            rows="5" maxlength="400" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn mr-5" data-toggle="collapse" data-target="#collapseExample"
+                            (click)="enviarPost()" (click)="btnClickAll()">Postar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container col-4 mt-5">
+        <div class="input-group mb-5">
+            <input id="txtPostId" type="number" [(ngModel)]="idPostagem" class="form-control" placeholder="Digite o id"
+                aria-label="Recipient's username" aria-describedby="button-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary bg-dark text-light" type="button" id="button-addon2"
+                    (click)="btnClickId()">Consultar</button>
+            </div>
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary bg-dark text-light" type="button" id="button-addon3"
+                    (click)="btnClickAll()">Consultar todos</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container col-lg-6 col-md-8 col-sm-10" *ngIf="showAll == true">
+        <div class="card my-5 bg-white rounded shadow-sm" style="max-width: 60rem;"
+            *ngFor="let post of posts.slice().reverse()">
+            <div class="p-2">
+                <img class="card-img-top fit-image" src="{{post.linkimg}}" alt="Card image cap">
+            </div>
+            <div class="card-header bg-light d-inline-flex justify-content-between">
+                <div class="column">
+                    <h2 class="font-weight-bold text-dark">{{post.titulo}}</h2>
+                    <span class="card-title text-darktext-secondary"
+                        style="text-align: right">{{post.dataInclusao}}</span>
+
+                </div>
+                <div class="column ml-5">
+                    <button id="editar" class="btn" height="20rem" [routerLink]="['/feed', post.idPostagem]" (click)="findById(post.idPostagem)">Editar</button>
+                </div>
+            </div>
+            <div class="card-body text-info">
+                <span class="card-title text-dark text-secondary">{{post.texto}}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container col-6 mb-5" *ngIf="showId == true">
+        <div class="card m-3 mb-5 bg-white rounded shadow-sm" style="max-width: 60rem;">
+            <div class="p-2">
+                <img class="card-img-top fit-image" src="{{post.linkimg}}" alt="Card image cap">
+            </div>
+            <div class="card-header bg-light d-inline-flex justify-content-between">
+                <div class="column">
+                    <h2 class="font-weight-bold text-dark">{{post.titulo}}</h2>
+                    <span class="card-title text-darktext-secondary"
+                        style="text-align: right">{{post.dataInclusao}}</span>
+
+                </div>
+                <div class="column ml-5">
+                    <button id="editar" class="btn" height="20rem" [routerLink]="['/feed', post.idPostagem]" (click)="findById(post.idPostagem)">Editar</button>
+                </div>
+            </div>
+            <div class="card-body text-info">
+                <span class="card-title text-dark text-secondary">{{post.texto}}</span>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+</div>

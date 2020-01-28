@@ -11,7 +11,6 @@ import { Users } from 'src/app/model/users';
 export class SignUpComponent implements OnInit {
   private user: Users = new Users();
   public users: Users[];
-  private existe: boolean = false;
 
   private filtro: any = /^([a-zA-zà-úÀ-Ú]|\s+)+$/;
   private num: any = /^[0-9]+$/;
@@ -97,27 +96,21 @@ export class SignUpComponent implements OnInit {
     }
 
     if (this.user.nome != "" && this.user.email != "" && this.user.telefone != null && this.user.senha != "" && this.user.senhaConf != "") {
-      this.verificaEmail();
-      if (!this.existe) {
-        this.usersService.insert(this.user).subscribe(response => {
-          this._msgEnvioDados = "Dados enviados com sucesso!";
-          this.user.nome = "";
-          this.user.email = "";
-          this.user.telefone = null;
-          this.user.senha = "";
-          this.user.senhaConf = "";
-          this._msgSenhaForte = "";
-          this._msgSenhaFraca = "";
-          this._msgErroEmail = "";
-          this.existe = false;
-        },
-          error => {
-            console.log(`Erro cod: ${error.status}`);
-            this._msgErroEmail = "O email já está cadastrado.";
-          })
-      }
-      else
-        this._msgErroEmail = `O email já existe`;
+      this.usersService.insert(this.user).subscribe(response => {
+        this._msgEnvioDados = "Dados enviados com sucesso!";
+        this.user.nome = "";
+        this.user.email = "";
+        this.user.telefone = null;
+        this.user.senha = "";
+        this.user.senhaConf = "";
+        this._msgSenhaForte = "";
+        this._msgSenhaFraca = "";
+        this._msgErroEmail = "";
+      },
+        error => {
+          console.log(`Erro cod: ${error.status}`);
+          this._msgErroEmail = "O email já está cadastrado.";
+        })
     }
   }
 
@@ -130,20 +123,5 @@ export class SignUpComponent implements OnInit {
       this._msgErroEmail = "";
       this._msgEnvioDados = "";
     }
-  }
-
-  verificaEmail() {
-    this.usersService.getAll().subscribe((lista: Users[]) => {
-      this.users = lista;
-    }, error => {
-      console.log(`Erro cod: ${error.status}`);
-    });
-
-    this.users.forEach(element => {
-      this.usersService.getById(element.idUsuario).subscribe();
-      if (this.user.email === element.email) {
-        this.existe = true;
-      }
-    });
   }
 }

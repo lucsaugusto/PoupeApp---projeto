@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from 'src/app/service/users/users.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Login } from 'src/app/model/login';
 import { LoginService } from './../../../service/login.service';
 import { Globals } from 'src/app/model/globals';
 import { Users } from 'src/app/model/users';
+import { ShareService } from 'src/app/service/share.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -13,8 +13,8 @@ import { Users } from 'src/app/model/users';
   providers: [ Globals ]
 })
 export class SignInComponent implements OnInit {
-
-  private login: Login = new Login();
+  log: boolean;
+  private login: Users = new Users();
   private _msgEnvioDados: string = null;
   private _msgErroEmail: string = null;
   private _msgCampoVazio: string = null;
@@ -38,6 +38,7 @@ export class SignInComponent implements OnInit {
         this.login.senha = "";
         console.log(`Ok`);
         Globals.user = userRes;
+        this.loginService.log.next(true);
         this.router.navigate(['home']);
       },
         error => {

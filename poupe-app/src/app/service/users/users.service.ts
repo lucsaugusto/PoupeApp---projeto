@@ -13,22 +13,22 @@ export class UsersService {
   constructor(private http: HttpClient) { }
 
   getAll(){
-    return this.http.get(`http://cloud.professorisidro.com.br:8088/usuario/all`);
+    return this.http.get(`http://localhost:8080/usuario/all`);
   }
 
   getById(id: number){
-    return this.http.get(`http://cloud.professorisidro.com.br:8088/usuario/${id}`);
+    return this.http.get(`http://localhost:8080/usuario/${id}`);
   }
 
   insert(user: Users){
-    return this.http.post(`http://cloud.professorisidro.com.br:8088/usuario/new`, user);
+    return this.http.post(`http://localhost:8080/usuario/insert`, user);
   }
 
   update(user: Users){
-    return this.http.put(`http://cloud.professorisidro.com.br:8088/usuario`, user);
+    return this.http.put(`http://localhost:8080/usuario/update`, user);
   }
 
   delete(id: number){
-    return this.http.delete(`http://cloud.professorisidro.com.br:8088/usuario/${id}`);
+    return this.http.delete(`http://localhost:8080/usuario/delete/${id}`);
   }
 }
