@@ -13,6 +13,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class PostsComponent implements OnInit {
   //Atributos
+  username:string;
   user: Users;
   posts: Array<Posts> = new Array<Posts>();
   post: Posts = new Posts();
@@ -26,11 +27,12 @@ export class PostsComponent implements OnInit {
   ngOnInit() {
     this.btnClickAll();
 
-    if (Globals.user === undefined) {
+    if (Globals.nome === undefined) {
       this.router.navigate(['login']);
     }
     else {
-      this.user = Globals.user;
+      console.log(Globals.nome);
+      this.username = Globals.nome;
     }
 
   }
@@ -59,6 +61,7 @@ export class PostsComponent implements OnInit {
       this.post.texto = "";
       this.post.linkimg = "";
       this.post.dataInclusao = "";
+      this.btnClickAll();
     });
 
   }

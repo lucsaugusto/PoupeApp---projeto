@@ -1,5 +1,5 @@
+import { Globals } from './../../model/globals';
 import { Component, OnInit } from '@angular/core';
-import { Globals } from 'src/app/model/globals';
 import { ShareService } from 'src/app/service/share.service';
 import { LoginService } from 'src/app/service/login.service';
 
@@ -23,6 +23,7 @@ export class TitleComponent implements OnInit {
 
   logout(){
     this.loginService.log.next(false);
+    Globals.nome = undefined;
   }
 
   

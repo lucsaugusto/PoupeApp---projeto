@@ -10,15 +10,16 @@ import { Router } from '@angular/router';
   providers: [Globals]
 })
 export class HomeComponent implements OnInit {
-  user: Users;
+  user: string;
   constructor(private router: Router) { }
 
   ngOnInit() {
-    if (Globals.user === undefined) {
+    if (Globals.nome === undefined) {
       this.router.navigate(['login']);
     }
     else {
-      this.user = Globals.user;
+      console.log(Globals.nome);
+      this.user = Globals.nome;
     }
   }
 

@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
   providers: [Globals]
 })
 export class ConsultarUsersComponent implements OnInit {
+  username : string;
   public users: Users[];
   public user: Users;
   constructor(private usersService: UsersService, private router: Router) { }
@@ -18,11 +19,12 @@ export class ConsultarUsersComponent implements OnInit {
 
   ngOnInit() {
     this.findAll();
-    if (Globals.user === undefined) {
+    if (Globals.nome === undefined) {
       this.router.navigate(['login']);
     }
     else {
-      this.user = Globals.user;
+      console.log(Globals.nome);
+      this.username = Globals.nome;
     }
   }
 

@@ -2,15 +2,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Users } from 'src/app/model/users';
 import { UsersService } from 'src/app/service/users/users.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Globals } from 'src/app/model/globals';
 
 @Component({
   selector: 'app-alterar-users',
   templateUrl: './alterar-users.component.html',
-  styleUrls: ['./alterar-users.component.css']
+  styleUrls: ['./alterar-users.component.css'],
+  providers: [Globals]
 })
 export class AlterarUsersComponent implements OnInit {
 
+  username: string;
   user: Users = new Users();
   users: Users[];
   novo: boolean = false;
@@ -32,9 +35,16 @@ export class AlterarUsersComponent implements OnInit {
   private _msgnovoEmail: string = null;
   private _msgEnvioDados: string = null;
 
-  constructor(private route: ActivatedRoute, private usersService: UsersService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private usersService: UsersService) { }
 
   ngOnInit() {
+    if (Globals.nome === undefined) {
+      this.router.navigate(['login']);
+    }
+    else {
+      console.log(Globals.nome);
+      this.username = Globals.nome;
+    }
     let id: number = this.route.snapshot.params["id"];
     if (id == undefined) {
       this.novo = true;
@@ -112,7 +122,7 @@ export class AlterarUsersComponent implements OnInit {
 
     if (this.user.nome != "" && this.user.email != "" && this.user.telefone != null && this.user.senha != "" && this.user.senhaConf != "") {
       this.usersService.update(this.user).subscribe(response => {
-        this._msgEnvioDados = "Dados enviados com sucesso!";
+        this._msgEnvioDados = `Dados enviados com sucesso!`;
         this.user.nome = "";
         this.user.email = "";
         this.user.telefone = null;

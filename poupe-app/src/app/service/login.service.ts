@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Login } from '../model/login';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { Users } from '../model/users';
@@ -16,4 +15,9 @@ export class LoginService {
   login(login: Users){
     return this.http.post(`http://localhost:8080/usuario/login`, login);
   }
+
+  // session(){
+  //   let token = localStorage.getItem("token");
+  //   return this.http.get("http://localhost:8080/usuario/all?token="+token);
+  // }
 }

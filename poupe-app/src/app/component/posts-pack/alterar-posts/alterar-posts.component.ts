@@ -12,6 +12,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class AlterarPostsComponent implements OnInit {
   //Atributos
+  username: string;
   user: Users;
   posts: Array<Posts> = new Array<Posts>();
   post: Posts = new Posts();
@@ -26,11 +27,12 @@ export class AlterarPostsComponent implements OnInit {
     let id: number = this.route.snapshot.params["id"];
     this.findById(id);
 
-    if (Globals.user === undefined) {
+    if (Globals.nome === undefined) {
       this.router.navigate(['login']);
     }
     else {
-      this.user = Globals.user;
+      console.log(Globals.nome);
+      this.username = Globals.nome;
     }
 
   }
