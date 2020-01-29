@@ -24,6 +24,7 @@ export class TitleComponent implements OnInit {
   logout(){
     this.loginService.log.next(false);
     Globals.nome = undefined;
+    localStorage.removeItem("token");
   }
 
   

@@ -11,3 +11,19 @@
     font-size: 15pt;
 }
 
+#login {
+    color: white !important;
+}
+#logout {
+    background-color: red !important;
+    color: white !important;
+}
+.btn{
+    color: white;
+    background-color: rgb(32, 56, 112);
+    outline-color: none;
+}
+
+.btn:hover {
+    color: #FFD15D;
+}

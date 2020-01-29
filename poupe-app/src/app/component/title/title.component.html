@@ -8,13 +8,14 @@
             class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
         <div id="navbarSupportedContent" class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active"><a [routerLink]="'/feed'" class="nav-link font-bold text-dark"> Início </a></li>
+                <li class="nav-item active"><a [routerLink]="'/feed'" class="nav-link font-bold text-dark" *ngIf='log'> Início </a></li>
                 <li class="nav-item active"><a [routerLink]="'/sobre'" class="nav-link font-bold text-dark"> Sobre </a></li>
                 <li class="nav-item active"><a [routerLink]="'/contato'" class="nav-link font-bold text-dark"> Contato </a></li>
                 <li class="nav-item active"><a [routerLink]="'/ajuda'" class="nav-link font-bold text-dark"> Ajuda </a></li>
-                <li class="nav-item active"><a [routerLink]="'/login'" class="nav-link font-bold text-dark" *ngIf='!log'>Login</a></li>
-                <li class="nav-item active"><a [routerLink]="'/login'" class="nav-link font-bold text-dark" (click)="logout()" *ngIf='log'>Logout</a></li>
-                <li class="nav-item active"><a [routerLink]="'/consultar'" class="nav-link font-bold text-dark"> Usuários </a></li>
+                <li class="nav-item active"><a [routerLink]="'/consultar'" class="nav-link font-bold text-dark" *ngIf='log'> Usuários </a></li>
+                <li class="nav-item active"><a [routerLink]="'/login'" class="nav-link font-bold text-dark btn" id="login" *ngIf='!log'>Login</a></li>
+                <li class="nav-item active"><a [routerLink]="'/login'" class="nav-link font-bold text-dark btn" id="logout" (click)="logout()" *ngIf='log'>Logout</a></li>
+                
             </ul>
         </div>
     </div>

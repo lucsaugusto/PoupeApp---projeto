@@ -14,6 +14,10 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
+    // if (!localStorage.getItem("token")) {
+    //   alert("Você não pode acessar está página sem estar logado")
+    //   this.router.navigate(['/login']);
+    // }
     if (Globals.nome === undefined) {
       this.router.navigate(['login']);
     }
@@ -21,6 +25,7 @@ export class HomeComponent implements OnInit {
       console.log(Globals.nome);
       this.user = Globals.nome;
     }
+    
   }
 
   
