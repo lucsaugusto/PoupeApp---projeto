@@ -13,18 +13,21 @@ export class TitleComponent implements OnInit {
 
   constructor(private loginService : LoginService) { }
 
-  log: boolean; 
+  username: string;
+  log: boolean; // recebe o valor do log do login service,  sendo utilizado pelo button do menu component
 
   ngOnInit() {
     this.loginService.log.subscribe( value => {
       this.log = value;
+      this.username = localStorage.getItem("nome");
     });
+    
   }
 
   logout(){
     this.loginService.log.next(false);
     Globals.nome = undefined;
-    localStorage.removeItem("token");
+    localStorage.clear();
   }
 
   

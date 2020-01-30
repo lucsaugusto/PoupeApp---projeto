@@ -1,8 +1,8 @@
 .navColor{
     background-color: #FFD15D;
     float: fixed;
-    top: 0;
     width: 100%;
+    color: black;
 }
 
 .text-dark {
@@ -11,6 +11,17 @@
     font-size: 15pt;
 }
 
+a {
+    color: black !important;
+}
+.log {
+    background-color: black!important;
+    color: white !important;
+    margin-top: -4px !important;
+}
+.log:hover{
+    color: #FFD15D !important;
+}
 /* #login {
     color: white !important;
 }

@@ -126,6 +126,8 @@ export class AlterarUsersComponent implements OnInit {
     if (this.user.nome != "" && this.user.email != "" && this.user.telefone != null && this.user.senha != "" && this.user.senhaConf != "") {
       this.usersService.update(this.user).subscribe(response => {
         this._msgEnvioDados = `Dados enviados com sucesso!`;
+        localStorage.setItem("nome",this.user.nome);
+        this.loginService.log.next(true);
         this.user.nome = "";
         this.user.email = "";
         this.user.telefone = null;
@@ -134,6 +136,7 @@ export class AlterarUsersComponent implements OnInit {
         this._msgSenhaForte = "";
         this._msgSenhaFraca = "";
         this._msgErroEmail = "";
+        
       },
         error => {
           console.log(`Erro cod: ${error.status}`);

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginService } from 'src/app/service/login.service';
+import { Globals } from 'src/app/model/globals';
 
 @Component({
   selector: 'app-contact',
@@ -18,9 +21,20 @@ export class ContactComponent implements OnInit {
   private _msgEnvioDados: string;
   private _msgCampoVazio: string;
 
-  constructor() { }
+  user: string;
+  constructor(private router: Router, private loginService: LoginService) { }
 
   ngOnInit() {
+    if (!localStorage.getItem("token")) {
+      alert("Você não pode acessar está página sem estar logado")
+      this.router.navigate(['/login']);
+    }
+    else {
+      Globals.nome = localStorage.getItem("nome");
+      this.user = Globals.nome;
+      this.loginService.log.next(true);
+    }
+    
   }
 
   validacao() {

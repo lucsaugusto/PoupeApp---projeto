@@ -39,7 +39,6 @@ export class SignInComponent implements OnInit {
         localStorage.setItem("token",res.token);
         localStorage.setItem("nome",res.nome);
         localStorage.setItem("email",res.email);
-        Globals.nome = res.nome;
         this.loginService.log.next(true);
         this.router.navigate(['home']);
       },

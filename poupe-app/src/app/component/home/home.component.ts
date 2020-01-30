@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Globals } from 'src/app/model/globals';
 import { Users } from 'src/app/model/users';
 import { Router } from '@angular/router';
 import { Token } from 'src/app/model/Token';
@@ -8,8 +7,7 @@ import { LoginService } from 'src/app/service/login.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
-  providers: [Globals]
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
   user: string;
@@ -21,14 +19,8 @@ export class HomeComponent implements OnInit {
       this.router.navigate(['/login']);
     }
     else {
-      Globals.nome = localStorage.getItem("nome");
-      this.user = Globals.nome;
+      this.user = localStorage.getItem("nome");
       this.loginService.log.next(true);
     }
-    
   }
-
-  
-
-
 }

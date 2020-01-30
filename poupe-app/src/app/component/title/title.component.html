@@ -1,7 +1,7 @@
 <div class="navbar navbar-expand-lg navbar-light fixed-top navColor">
     <div class="container ">
         <a href="#" class="navbar-brand d-flex align-items-center text-secondary"><img
-                src="./../../../assets/logoNav.png" height="45px" alt=""></a>
+                src="./../../../assets/logoNav.png" height="50px" alt=""></a>
 
         <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
@@ -13,8 +13,10 @@
                 <li class="nav-item active"><a [routerLink]="'/contato'" class="nav-link font-bold text-dark"> Contato </a></li>
                 <li class="nav-item active"><a [routerLink]="'/ajuda'" class="nav-link font-bold text-dark"> Ajuda </a></li>
                 <li class="nav-item active"><a [routerLink]="'/consultar'" class="nav-link font-bold text-dark" *ngIf='log'> Usuários </a></li>
-                <li class="nav-item active"><a [routerLink]="'/login'" class="nav-link font-bold text-dark" *ngIf='!log'>Login</a></li>
-                <li class="nav-item active"><a [routerLink]="'/login'" class="nav-link font-bold text-dark"  (click)="logout()" *ngIf='log'>Logout</a></li>
+                <li class="nav-item active"><a [routerLink]="'/login'" class="nav-link font-bold text-dark" *ngIf='!log'><button class="btn log">Login</button></a></li>
+                <li class="nav-item active"><a [routerLink]="'/login'" class="nav-link font-bold text-dark" (click)="logout()" *ngIf='log'><button class="btn log">Logout</button></a></li>
+                <li class="nav-item active"><a [routerLink]="'/feed'" class="nav-link font-bold text-dark" *ngIf='log'> {{username}} </a></li>
+
                 
             </ul>
         </div>
