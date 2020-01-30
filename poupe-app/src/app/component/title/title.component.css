@@ -11,13 +11,13 @@
     font-size: 15pt;
 }
 
-#login {
+/* #login {
     color: white !important;
 }
 #logout {
     background-color: red !important;
     color: white !important;
-}
+} */
 .btn{
     color: white;
     background-color: rgb(32, 56, 112);

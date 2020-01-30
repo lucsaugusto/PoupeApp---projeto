@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Globals } from 'src/app/model/globals';
 import { Users } from 'src/app/model/users';
 import { Router } from '@angular/router';
+import { Token } from 'src/app/model/Token';
+import { LoginService } from 'src/app/service/login.service';
 
 @Component({
   selector: 'app-home',
@@ -11,19 +13,17 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   user: string;
-  constructor(private router: Router) { }
+  constructor(private router: Router, private loginService: LoginService) { }
 
   ngOnInit() {
-    // if (!localStorage.getItem("token")) {
-    //   alert("Você não pode acessar está página sem estar logado")
-    //   this.router.navigate(['/login']);
-    // }
-    if (Globals.nome === undefined) {
-      this.router.navigate(['login']);
+    if (!localStorage.getItem("token")) {
+      alert("Você não pode acessar está página sem estar logado")
+      this.router.navigate(['/login']);
     }
     else {
-      console.log(Globals.nome);
+      Globals.nome = localStorage.getItem("nome");
       this.user = Globals.nome;
+      this.loginService.log.next(true);
     }
     
   }

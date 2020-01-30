@@ -4,6 +4,7 @@ import { Users } from 'src/app/model/users';
 import { Posts } from 'src/app/model/posts';
 import { Globals } from 'src/app/model/globals';
 import { Router, ActivatedRoute } from '@angular/router';
+import { LoginService } from 'src/app/service/login.service';
 
 @Component({
   selector: 'app-alterar-posts',
@@ -20,21 +21,22 @@ export class AlterarPostsComponent implements OnInit {
   showId: boolean
   showAll: boolean
   //Construtor
-  constructor(private postService: PostsService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private postService: PostsService, private router: Router, private route: ActivatedRoute, private loginService: LoginService) { }
 
   //É chamado assim que baixar todos os componentes e serviços na maquina do usuario;
   ngOnInit() {
     let id: number = this.route.snapshot.params["id"];
     this.findById(id);
 
-    if (Globals.nome === undefined) {
-      this.router.navigate(['login']);
+    if (!localStorage.getItem("token")) {
+      alert("Você não pode acessar está página sem estar logado")
+      this.router.navigate(['/login']);
     }
     else {
-      console.log(Globals.nome);
+      Globals.nome = localStorage.getItem("nome");
       this.username = Globals.nome;
+      this.loginService.log.next(true);
     }
-
   }
 
   findById(id: number) {

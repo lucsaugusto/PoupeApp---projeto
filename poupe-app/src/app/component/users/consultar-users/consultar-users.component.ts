@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/service/users/users.service';
 import { Globals } from 'src/app/model/globals';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/app/service/login.service';
 
 @Component({
   selector: 'app-consultar-users',
@@ -14,17 +15,19 @@ export class ConsultarUsersComponent implements OnInit {
   username : string;
   public users: Users[];
   public user: Users;
-  constructor(private usersService: UsersService, private router: Router) { }
+  constructor(private usersService: UsersService, private router: Router, private loginService: LoginService) { }
   
 
   ngOnInit() {
     this.findAll();
-    if (Globals.nome === undefined) {
-      this.router.navigate(['login']);
+    if (!localStorage.getItem("token")) {
+      alert("Você não pode acessar está página sem estar logado")
+      this.router.navigate(['/login']);
     }
     else {
-      console.log(Globals.nome);
+      Globals.nome = localStorage.getItem("nome");
       this.username = Globals.nome;
+      this.loginService.log.next(true);
     }
   }
 

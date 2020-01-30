@@ -4,6 +4,7 @@ import { Users } from 'src/app/model/users';
 import { UsersService } from 'src/app/service/users/users.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Globals } from 'src/app/model/globals';
+import { LoginService } from 'src/app/service/login.service';
 
 @Component({
   selector: 'app-alterar-users',
@@ -35,15 +36,17 @@ export class AlterarUsersComponent implements OnInit {
   private _msgnovoEmail: string = null;
   private _msgEnvioDados: string = null;
 
-  constructor(private route: ActivatedRoute, private router: Router, private usersService: UsersService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private usersService: UsersService, private loginService: LoginService) { }
 
   ngOnInit() {
-    if (Globals.nome === undefined) {
-      this.router.navigate(['login']);
+    if (!localStorage.getItem("token")) {
+      alert("Você não pode acessar está página sem estar logado")
+      this.router.navigate(['/login']);
     }
     else {
-      console.log(Globals.nome);
+      Globals.nome = localStorage.getItem("nome");
       this.username = Globals.nome;
+      this.loginService.log.next(true);
     }
     let id: number = this.route.snapshot.params["id"];
     if (id == undefined) {
