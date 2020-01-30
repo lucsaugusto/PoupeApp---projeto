@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from './../../../service/login.service';
-import { Globals } from 'src/app/model/globals';
+
 import { Users } from 'src/app/model/users';
 import { ShareService } from 'src/app/service/share.service';
 import { Token } from 'src/app/model/token';
@@ -9,8 +9,7 @@ import { Token } from 'src/app/model/token';
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.css'],
-  providers: [ Globals ]
+  styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent implements OnInit {
 

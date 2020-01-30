@@ -44,8 +44,7 @@ export class AlterarUsersComponent implements OnInit {
       this.router.navigate(['/login']);
     }
     else {
-      Globals.nome = localStorage.getItem("nome");
-      this.username = Globals.nome;
+      this.username = localStorage.getItem("nome");
       this.loginService.log.next(true);
     }
     let id: number = this.route.snapshot.params["id"];

@@ -22,6 +22,7 @@ export class AboutUsComponent implements OnInit {
       Globals.nome = localStorage.getItem("nome");
       this.user = Globals.nome;
       this.loginService.log.next(true);
+      window.scrollTo(0, 0);
     }
   }
 

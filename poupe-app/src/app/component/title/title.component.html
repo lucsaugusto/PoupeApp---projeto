@@ -13,9 +13,19 @@
                 <li class="nav-item active"><a [routerLink]="'/contato'" class="nav-link font-bold text-dark"> Contato </a></li>
                 <li class="nav-item active"><a [routerLink]="'/ajuda'" class="nav-link font-bold text-dark"> Ajuda </a></li>
                 <li class="nav-item active"><a [routerLink]="'/consultar'" class="nav-link font-bold text-dark" *ngIf='log'> Usuários </a></li>
-                <li class="nav-item active"><a [routerLink]="'/login'" class="nav-link font-bold text-dark" *ngIf='!log'><button class="btn log">Login</button></a></li>
-                <li class="nav-item active"><a [routerLink]="'/login'" class="nav-link font-bold text-dark" (click)="logout()" *ngIf='log'><button class="btn log">Logout</button></a></li>
-                <li class="nav-item active"><a [routerLink]="'/feed'" class="nav-link font-bold text-dark" *ngIf='log'> {{username}} </a></li>
+                <li class="nav-item active"><a [routerLink]="'/login'" class="nav-link font-bold text-dark" *ngIf='!log'><button class="btn log ml-3">Login</button></a></li>
+                <!-- <li class="nav-item active"><a [routerLink]="'/login'" class="nav-link font-bold text-dark" (click)="logout()" *ngIf='log'><button class="btn log">Logout</button></a></li> -->
+                <!-- <li class="nav-item active"><a [routerLink]="'/login'" class="nav-link font-bold text-dark" *ngIf='log'><button class="btn dropdown-toggle log"> {{username}} </button></a></li> -->
+                <div class="btn-group dropdown ml-3 mr-0 p-0" *ngIf='log'>
+                    <button type="button" class="btn dropdown-toggle p-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{username}}</button>
+                    <div class="dropdown-menu">
+
+                        <li class="nav-item active p-2"><a [routerLink]="'/login'" class="nav-link font-bold text-dark" (click)="logout()">Editar</a></li>
+                        <li class="nav-item active p-2"><a [routerLink]="'/login'" class="nav-link font-bold text-dark" (click)="logout()">Logout</a></li>
+                    </div>
+                </div>
+
+                
 
                 
             </ul>

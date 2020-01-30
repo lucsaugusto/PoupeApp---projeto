@@ -1,15 +1,13 @@
 import { Users } from 'src/app/model/users';
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/service/users/users.service';
-import { Globals } from 'src/app/model/globals';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/service/login.service';
 
 @Component({
   selector: 'app-consultar-users',
   templateUrl: './consultar-users.component.html',
-  styleUrls: ['./consultar-users.component.css'],
-  providers: [Globals]
+  styleUrls: ['./consultar-users.component.css']
 })
 export class ConsultarUsersComponent implements OnInit {
   username : string;
@@ -25,8 +23,7 @@ export class ConsultarUsersComponent implements OnInit {
       this.router.navigate(['/login']);
     }
     else {
-      Globals.nome = localStorage.getItem("nome");
-      this.username = Globals.nome;
+      this.username = localStorage.getItem("nome");
       this.loginService.log.next(true);
     }
   }

@@ -36,6 +36,7 @@ export class PostsComponent implements OnInit {
       Globals.nome = localStorage.getItem("nome");
       this.username = Globals.nome;
       this.loginService.log.next(true);
+      window.scrollTo(0, 0);
     }
   }
 
