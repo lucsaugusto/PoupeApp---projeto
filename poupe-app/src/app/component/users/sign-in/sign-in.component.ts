@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from './../../../service/login.service';
-
 import { Users } from 'src/app/model/users';
-import { ShareService } from 'src/app/service/share.service';
 import { Token } from 'src/app/model/token';
 
 @Component({

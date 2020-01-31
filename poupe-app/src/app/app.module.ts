@@ -19,7 +19,6 @@ import { RemoverUsersComponent } from './component/users/remover-users/remover-u
 import { UsersService } from './service/users/users.service';
 import { HomeComponent } from './component/home/home.component';
 import { HelpComponent } from './component/help/help.component';
-import { ShareService } from './service/share.service';
 import { AlterarPostsComponent } from './component/posts-pack/alterar-posts/alterar-posts.component';
 
 
@@ -48,7 +47,7 @@ import { AlterarPostsComponent } from './component/posts-pack/alterar-posts/alte
     FormsModule,
     HttpClientModule
   ],
-  providers: [UsersService, PostsService, ShareService],
+  providers: [UsersService, PostsService],
   bootstrap: [AppComponent]
 })
   

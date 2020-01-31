@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { PostsService } from 'src/app/service/posts.service';
 import { Users } from 'src/app/model/users';
 import { Posts } from 'src/app/model/posts';
-import { Globals } from 'src/app/model/globals';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LoginService } from 'src/app/service/login.service';
 
@@ -33,8 +32,7 @@ export class AlterarPostsComponent implements OnInit {
       this.router.navigate(['/login']);
     }
     else {
-      Globals.nome = localStorage.getItem("nome");
-      this.username = Globals.nome;
+      this.username = localStorage.getItem("nome");
       this.loginService.log.next(true);
     }
   }

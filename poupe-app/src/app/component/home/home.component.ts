@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Users } from 'src/app/model/users';
 import { Router } from '@angular/router';
-import { Token } from 'src/app/model/Token';
 import { LoginService } from 'src/app/service/login.service';
 
 @Component({
@@ -10,7 +8,7 @@ import { LoginService } from 'src/app/service/login.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  user: string;
+  username: string;
   constructor(private router: Router, private loginService: LoginService) { }
 
   ngOnInit() {
@@ -19,7 +17,7 @@ export class HomeComponent implements OnInit {
       this.router.navigate(['/login']);
     }
     else {
-      this.user = localStorage.getItem("nome");
+      this.username = localStorage.getItem("nome");
       this.loginService.log.next(true);
     }
   }

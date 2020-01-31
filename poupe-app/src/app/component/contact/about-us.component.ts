@@ -8,12 +8,12 @@ import { LoginService } from 'src/app/service/login.service';
   styleUrls: ['./about-us.component.css']
 })
 export class AboutUsComponent implements OnInit {
-  username: string;
+  user: string;
   constructor(private router: Router, private loginService: LoginService) { }
 
   ngOnInit() {
     if (localStorage.getItem("token")) {
-      this.username = localStorage.getItem("nome");
+      this.user = localStorage.getItem("nome");
       this.loginService.log.next(true);
       window.scrollTo(0, 0);
     }
