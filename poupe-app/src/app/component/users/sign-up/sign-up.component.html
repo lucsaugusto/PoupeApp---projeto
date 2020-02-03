@@ -56,7 +56,7 @@
                         <div class="form-group form-group-margin">
                             <label for="nome">Confirmar senha</label>
                             <input type="password" value="" class="form-control" data-placeholder="Confirmar senha"
-                                id="senhaConf" placeholder="Confirme sua senha" maxlength="25" [(ngModel)]="user.senhaConf"
+                                id="senhaConf" placeholder="Confirme sua senha" maxlength="25" [(ngModel)]="senhaConf"
                                 (click)="verificarForca()" required>
                             <span *ngIf='_msgConfirmaSenha'>{{_msgConfirmaSenha}}</span>
                         </div>

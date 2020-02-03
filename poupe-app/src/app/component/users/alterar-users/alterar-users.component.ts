@@ -18,7 +18,7 @@ export class AlterarUsersComponent implements OnInit {
   user: Users = new Users();
   users: Users[];
   novo: boolean = false;
-
+  senhaConf: string;
   private filtro: any = /^([a-zA-zà-úÀ-Ú]|\s+)+$/;
   private num: any = /^[0-9]+$/;
   private verfSenha: any = /^([@#$%&a-zA-zà-úÀ-Ú0-9])+$/;
@@ -68,7 +68,7 @@ export class AlterarUsersComponent implements OnInit {
   verificarForca() {
     if (this.user.senha.length < 10 || !this.verfSenha.test(this.user.senha)) {
       this.user.senha = "";
-      this.user.senhaConf = "";
+      this.senhaConf = "";
       this._msgErroSenha = `Senha inválida, digite uma senha com pelo menos 10 dígitos(Letras, Números e '@ # $ % &').`;
       this._msgSenhaForte = "";
       this._msgSenhaFraca = "";
@@ -87,7 +87,7 @@ export class AlterarUsersComponent implements OnInit {
   }
 
   validacao() {
-    if (this.user.nome == "" || this.user.email == "" || this.user.telefone == null || this.user.senha == "" || this.user.senhaConf == "") {
+    if (this.user.nome == "" || this.user.email == "" || this.user.telefone == null || this.user.senha == "" || this.senhaConf == "") {
       alert('Preencha todos os campos');
     }
     if (!this.filtro.test(this.user.nome) || this.user.nome.indexOf(" ") < 1) {
@@ -114,15 +114,15 @@ export class AlterarUsersComponent implements OnInit {
       this._msgErroTel = "";
     }
 
-    if (this.user.senha === this.user.senhaConf) {
+    if (this.user.senha === this.senhaConf) {
       this._msgConfirmaSenha = "";
     }
-    else if (this.user.senhaConf !== "") {
-      this.user.senhaConf = "";
+    else if (this.senhaConf !== "") {
+      this.senhaConf = "";
       this._msgConfirmaSenha = `Senhas diferentes, digite novamente`;
     }
 
-    if (this.user.nome != "" && this.user.email != "" && this.user.telefone != null && this.user.senha != "" && this.user.senhaConf != "") {
+    if (this.user.nome != "" && this.user.email != "" && this.user.telefone != null && this.user.senha != "" && this.senhaConf != "") {
       this.usersService.update(this.user).subscribe(response => {
         this._msgEnvioDados = `Dados enviados com sucesso!`;
         localStorage.setItem("nome",this.user.nome);
@@ -131,7 +131,7 @@ export class AlterarUsersComponent implements OnInit {
         this.user.email = "";
         this.user.telefone = null;
         this.user.senha = "";
-        this.user.senhaConf = "";
+        this.senhaConf = "";
         this._msgSenhaForte = "";
         this._msgSenhaFraca = "";
         this._msgErroEmail = "";

@@ -11,7 +11,7 @@ import { Users } from 'src/app/model/users';
 export class SignUpComponent implements OnInit {
   private user: Users = new Users();
   public users: Users[];
-
+  senhaConf: string;
   private filtro: any = /^([a-zA-zà-úÀ-Ú]|\s+)+$/;
   private num: any = /^[0-9]+$/;
   private verfSenha: any = /^([@#$%&a-zA-zà-úÀ-Ú0-9])+$/;
@@ -40,7 +40,7 @@ export class SignUpComponent implements OnInit {
   verificarForca() {
     if (this.user.senha.length < 10 || !this.verfSenha.test(this.user.senha)) {
       this.user.senha = "";
-      this.user.senhaConf = "";
+      this.senhaConf = "";
       this._msgErroSenha = `Senha inválida, digite uma senha com pelo menos 10 dígitos(Letras, Números e '@ # $ % &').`;
       this._msgSenhaForte = "";
       this._msgSenhaFraca = "";
@@ -59,7 +59,7 @@ export class SignUpComponent implements OnInit {
   }
 
   validacao() {
-    if (this.user.nome == "" || this.user.email == "" || this.user.telefone == null || this.user.senha == "" || this.user.senhaConf == "") {
+    if (this.user.nome == "" || this.user.email == "" || this.user.telefone == null || this.user.senha == "" || this.senhaConf == "") {
       this._msgCampoVazio = "Atenção! Preencha Todos os campos";
       this._msgEnvioDados = "";
     }
@@ -87,22 +87,22 @@ export class SignUpComponent implements OnInit {
       this._msgErroTel = "";
     }
 
-    if (this.user.senha === this.user.senhaConf) {
+    if (this.user.senha === this.senhaConf) {
       this._msgConfirmaSenha = "";
     }
-    else if (this.user.senhaConf !== "") {
-      this.user.senhaConf = "";
+    else if (this.senhaConf !== "") {
+      this.senhaConf = "";
       this._msgConfirmaSenha = `Senhas diferentes, digite novamente`;
     }
 
-    if (this.user.nome != "" && this.user.email != "" && this.user.telefone != null && this.user.senha != "" && this.user.senhaConf != "") {
+    if (this.user.nome != "" && this.user.email != "" && this.user.telefone != null && this.user.senha != "" && this.senhaConf != "") {
       this.usersService.insert(this.user).subscribe(response => {
         this._msgEnvioDados = "Dados enviados com sucesso!";
         this.user.nome = "";
         this.user.email = "";
         this.user.telefone = null;
         this.user.senha = "";
-        this.user.senhaConf = "";
+        this.senhaConf = "";
         this._msgSenhaForte = "";
         this._msgSenhaFraca = "";
         this._msgErroEmail = "";

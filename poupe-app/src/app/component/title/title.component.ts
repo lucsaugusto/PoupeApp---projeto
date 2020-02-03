@@ -1,13 +1,11 @@
 import { Globals } from './../../model/globals';
 import { Component, OnInit } from '@angular/core';
-import { ShareService } from 'src/app/service/share.service';
 import { LoginService } from 'src/app/service/login.service';
 
 @Component({
   selector: 'app-title',
   templateUrl: './title.component.html',
-  styleUrls: ['./title.component.css'],
-  providers: [Globals]
+  styleUrls: ['./title.component.css']
 })
 export class TitleComponent implements OnInit {
 
@@ -26,7 +24,6 @@ export class TitleComponent implements OnInit {
 
   logout(){
     this.loginService.log.next(false);
-    Globals.nome = undefined;
     localStorage.clear();
   }
 
