@@ -16,8 +16,7 @@ export class LoginService {
     return this.http.post(`http://localhost:8080/usuario/login`, login);
   }
 
-  // session(){
-  //   let token = localStorage.getItem("token");
-  //   return this.http.get("http://localhost:8080/usuario/all?token="+token);
-  // }
+  loginTrue(token: String){
+    return this.http.get(`http://localhost:8080/usuario/login/${token}` );
+  }
 }

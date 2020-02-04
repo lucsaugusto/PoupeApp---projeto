@@ -7,7 +7,7 @@ export class Posts {
     titulo: string;
     texto: string;
     linkimg: string;
-    dataInclusao: string;
+    preco:  number;
     usuario: Users;
     pesquisa: Pesquisa;
     comentario: Comentario[];

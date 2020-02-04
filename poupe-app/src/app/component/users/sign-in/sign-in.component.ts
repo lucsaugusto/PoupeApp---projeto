@@ -3,11 +3,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from './../../../service/login.service';
 import { Users } from 'src/app/model/users';
 import { Token } from 'src/app/model/token';
+import { Globals } from 'src/app/model/globals';
 
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.css']
+  styleUrls: ['./sign-in.component.css'],
+  providers: [Globals]
 })
 export class SignInComponent implements OnInit {
 
@@ -27,6 +29,7 @@ export class SignInComponent implements OnInit {
       this._msgEnvioDados = "";
     }
     else {
+      
       this._msgCampoVazio = "";
       this.loginService.login(this.login).subscribe((res: Token) => {
         this._msgErroEmail = "";
@@ -34,10 +37,12 @@ export class SignInComponent implements OnInit {
         this.login.email = "";
         this.login.senha = "";
         localStorage.setItem("token",res.token);
-        localStorage.setItem("nome",res.nome);
-        localStorage.setItem("email",res.email);
-        this.loginService.log.next(true);
-        this.router.navigate(['home']);
+        this.loginService.loginTrue(localStorage.getItem("token")).subscribe((res2: Users) => {
+          Globals.user = res2;
+          alert(Globals.user.nome);
+          this.loginService.log.next(true);
+          this.router.navigate(['home']);
+        });
       },
         error => {
           this._msgErroEmail = "Falha! O usuário não existe";

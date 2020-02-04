@@ -5,7 +5,8 @@ import { LoginService } from 'src/app/service/login.service';
 @Component({
   selector: 'app-title',
   templateUrl: './title.component.html',
-  styleUrls: ['./title.component.css']
+  styleUrls: ['./title.component.css'],
+  providers: [Globals]
 })
 export class TitleComponent implements OnInit {
 
@@ -17,9 +18,8 @@ export class TitleComponent implements OnInit {
   ngOnInit() {
     this.loginService.log.subscribe( value => {
       this.log = value;
-      this.username = localStorage.getItem("nome");
+      this.username = Globals.user.nome;
     });
-    
   }
 
   logout(){
