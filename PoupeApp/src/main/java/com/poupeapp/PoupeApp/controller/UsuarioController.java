@@ -29,11 +29,14 @@ public class UsuarioController {
     	}
     }
 	
-	@GetMapping("/usuario/login/{token}")
-	public ResponseEntity<Usuario> loginValid(@PathVariable String token){
-		if(Autenticacao.isValid(token)) {
-			Usuario usuario = Autenticacao.extractUser(token);
-			return ResponseEntity.ok(usuario);
+	@GetMapping("/usuario/info")
+	public ResponseEntity<Usuario> loginInfo(@RequestParam String token){
+		if(token != null) {
+			if(Autenticacao.isValid(token)) {
+				Usuario usuario = Autenticacao.extractUser(token);
+				return ResponseEntity.ok(usuario);
+			}
+			return ResponseEntity.status(403).build();
 		}
 		return ResponseEntity.notFound().build();
 	}

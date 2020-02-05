@@ -1,8 +1,8 @@
+import { Users } from './../../../model/users';
+import { Globals } from './../../../model/globals';
 import { Component, OnInit } from '@angular/core';
 import { PostsService } from 'src/app/service/posts.service';
 import { Posts } from 'src/app/model/posts';
-import { Globals } from 'src/app/model/globals';
-import { Users } from 'src/app/model/users';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LoginService } from 'src/app/service/login.service';
 
@@ -15,12 +15,13 @@ import { LoginService } from 'src/app/service/login.service';
 export class PostsComponent implements OnInit {
   //Atributos
   username:string;
-  user: Users;
+  user: Users= new Users(0,"","","","",null,null,null,null); //// Aqui
   posts: Array<Posts> = new Array<Posts>();
   post: Posts = new Posts();
   idPostagem: number;
-  showId: boolean
-  showAll: boolean
+  showId: boolean;
+  showAll: boolean;
+  valor: any;
   //Construtor
   constructor(private postService: PostsService, private router: Router, private route: ActivatedRoute, private loginService: LoginService) { }
 
@@ -33,7 +34,6 @@ export class PostsComponent implements OnInit {
       this.router.navigate(['/login']);
     }
     else {
-      Globals.user.nome = localStorage.getItem("nome");
       this.username = Globals.user.nome;
       this.loginService.log.next(true);
       window.scrollTo(0, 0);
@@ -58,17 +58,22 @@ export class PostsComponent implements OnInit {
   }
 
   enviarPost() {
+    this.valor = <any>Globals.user.idUsuario;
+    alert(this.valor)
+    this.user.idUsuario = <number>this.valor;
+    this.post.usuario = this.user;
+
     this.postService.insert(this.post).subscribe((postOut: Posts) => {
       this.post = postOut;
       this.post.titulo = "";
       this.post.texto = "";
       this.post.linkimg = "";
       this.post.preco = null;
+      console.log("IdUsuario " + this.post.usuario.idUsuario);
       this.btnClickAll();
     });
 
   }
-
   editarPost() {
     this.postService.update(this.post).subscribe((postOut: Posts) => {
       this.post = postOut;

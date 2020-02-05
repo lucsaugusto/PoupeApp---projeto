@@ -66,6 +66,9 @@
     <div class="container col-lg-6 col-md-8 col-sm-10" *ngIf="showAll == true">
         <div class="card my-5 bg-white rounded shadow-sm" style="max-width: 60rem;"
             *ngFor="let post of posts.slice().reverse()">
+            <div class="card-header bg-light d-inline-flex justify-content-between">
+                   {{ post.usuario.nome }}
+            </div>
             <div class="p-2">
                 <img class="card-img-top fit-image" src="{{post.linkimg}}" alt="Card image cap">
             </div>
@@ -73,7 +76,7 @@
                 <div class="column">
                     <h2 class="font-weight-bold text-dark">{{post.titulo}}</h2>
                     <span class="card-title text-darktext-secondary"
-                        style="text-align: right">{{post.dataInclusao}}</span>
+                        style="text-align: right">R$ {{post.preco}}</span>
 
                 </div>
                 <div class="column ml-5">
@@ -95,7 +98,7 @@
                 <div class="column">
                     <h2 class="font-weight-bold text-dark">{{post.titulo}}</h2>
                     <span class="card-title text-darktext-secondary"
-                        style="text-align: right">{{post.dataInclusao}}</span>
+                        style="text-align: right">R$ {{post.preco}}</span>
 
                 </div>
                 <div class="column ml-5">

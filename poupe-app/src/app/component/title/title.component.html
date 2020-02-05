@@ -8,20 +8,17 @@
             class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
         <div id="navbarSupportedContent" class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active"><a [routerLink]="'/feed'" class="nav-link font-bold text-dark" *ngIf='log'> Início </a></li>
+                <li class="nav-item active"><a [routerLink]="'/feed'" class="nav-link font-bold text-dark" *ngIf='user != null'> Início </a></li>
                 <li class="nav-item active"><a [routerLink]="'/sobre'" class="nav-link font-bold text-dark"> Sobre </a></li>
                 <li class="nav-item active"><a [routerLink]="'/contato'" class="nav-link font-bold text-dark"> Contato </a></li>
                 <li class="nav-item active"><a [routerLink]="'/ajuda'" class="nav-link font-bold text-dark"> Ajuda </a></li>
-                <li class="nav-item active"><a [routerLink]="'/consultar'" class="nav-link font-bold text-dark" *ngIf='log'> Usuários </a></li>
-                <li class="nav-item active"><a [routerLink]="'/login'" class="nav-link font-bold text-dark" *ngIf='!log'><button class="btn log ml-3">Login</button></a></li>
-                <!-- <li class="nav-item active"><a [routerLink]="'/login'" class="nav-link font-bold text-dark" (click)="logout()" *ngIf='log'><button class="btn log">Logout</button></a></li> -->
-                <!-- <li class="nav-item active"><a [routerLink]="'/login'" class="nav-link font-bold text-dark" *ngIf='log'><button class="btn dropdown-toggle log"> {{username}} </button></a></li> -->
-                <div class="btn-group dropdown ml-3 mr-0 p-0" *ngIf='log'>
-                    <button type="button" class="btn dropdown-toggle p-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{Globals.user.nome}}</button>
+                <li class="nav-item active"><a [routerLink]="'/consultar'" class="nav-link font-bold text-dark" *ngIf='user != null'> Usuários </a></li>
+                <li class="nav-item active"><a [routerLink]="'/login'" class="nav-link font-bold text-dark" *ngIf='user == null'><button class="btn log ml-3">Login</button></a></li>
+                <div class="btn-group dropdown ml-3 mr-0 p-0" *ngIf='user != null'>
+                    <button type="button" class="btn dropdown-toggle p-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{username}}</button>
                     <div class="dropdown-menu">
-
-                        <li class="nav-item active p-2"><a [routerLink]="'/login'" class="nav-link font-bold text-dark" (click)="logout()">Editar</a></li>
-                        <li class="nav-item active p-2"><a [routerLink]="'/login'" class="nav-link font-bold text-dark" (click)="logout()">Logout</a></li>
+                        <li class="nav-item active p-2"><a [routerLink]="['/editar', user.idUsuario]" class="nav-link font-bold text-dark" >Editar</a></li>
+                        <li class="nav-item active p-2"><a [routerLink]="'/login'" id="logout" class="nav-link font-bold text-dark" (click)="logout()">Logout</a></li>
                     </div>
                 </div>
 

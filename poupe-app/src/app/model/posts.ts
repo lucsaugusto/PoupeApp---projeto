@@ -11,4 +11,7 @@ export class Posts {
     usuario: Users;
     pesquisa: Pesquisa;
     comentario: Comentario[];
+
+    
+
 }

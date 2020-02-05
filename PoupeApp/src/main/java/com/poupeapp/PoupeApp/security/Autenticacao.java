@@ -8,7 +8,7 @@ public class Autenticacao {
 	private static final String PREFIXO="#PoUpEaPp";
 	public static Token generateToken(Usuario usuario) {
 		Token token = new Token();
-		String str = PREFIXO+"|"+usuario.getIdUsuario()+"|"+usuario.getEmail()+"|"+usuario.getNome();
+		String str = PREFIXO+"|"+usuario.getIdUsuario()+"|"+usuario.getNome()+"|"+usuario.getEmail();
 		String strToken = DatatypeConverter.printHexBinary(str.getBytes());
 		
 		token.setToken(strToken);
@@ -30,8 +30,8 @@ public class Autenticacao {
 		String parts[] = str.split("\\|");
 		Usuario usuario = new Usuario();
 		usuario.setIdUsuario(Integer.parseInt(parts[1]));
-		usuario.setEmail(parts[2]);
-		usuario.setNome(parts[3]);
+		usuario.setNome(parts[2]);
+		usuario.setEmail(parts[3]);
 		return usuario;
 	}
 }

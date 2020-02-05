@@ -20,8 +20,7 @@ import { UsersService } from './service/users/users.service';
 import { HomeComponent } from './component/home/home.component';
 import { HelpComponent } from './component/help/help.component';
 import { AlterarPostsComponent } from './component/posts-pack/alterar-posts/alterar-posts.component';
-
-
+import * as $ from 'jquery';
 
 @NgModule({
   declarations: [

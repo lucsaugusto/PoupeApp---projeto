@@ -16,7 +16,7 @@ export class LoginService {
     return this.http.post(`http://localhost:8080/usuario/login`, login);
   }
 
-  loginTrue(token: String){
-    return this.http.get(`http://localhost:8080/usuario/login/${token}` );
+  loginInfo(token: string){
+    return this.http.get(`http://localhost:8080/usuario/info?token=`+ token);
   }
 }

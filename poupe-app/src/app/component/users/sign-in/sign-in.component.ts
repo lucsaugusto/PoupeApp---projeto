@@ -20,29 +20,28 @@ export class SignInComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute, private loginService: LoginService) { }
 
   ngOnInit() {
+    if (localStorage.getItem("token")) {
+      this.router.navigate(['home']);
+    }
   }
 
   fazerLogin() {
-    if(this.login.email == "" || this.login.senha == "" || this.login.email == null || this.login.senha == null){
+    if (this.login.email == "" || this.login.senha == "" || this.login.email == null || this.login.senha == null) {
       this._msgCampoVazio = "Atenção! Preencha Todos os campos";
       this._msgErroEmail = "";
       this._msgEnvioDados = "";
     }
     else {
-      
+
       this._msgCampoVazio = "";
       this.loginService.login(this.login).subscribe((res: Token) => {
         this._msgErroEmail = "";
         this._msgEnvioDados = "Sucesso! O usuário existe";
         this.login.email = "";
         this.login.senha = "";
-        localStorage.setItem("token",res.token);
-        this.loginService.loginTrue(localStorage.getItem("token")).subscribe((res2: Users) => {
-          Globals.user = res2;
-          alert(Globals.user.nome);
-          this.loginService.log.next(true);
-          this.router.navigate(['home']);
-        });
+        localStorage.setItem("token", res.token);
+        // this.router.navigate(['home']);
+        window.location.reload();
       },
         error => {
           this._msgErroEmail = "Falha! O usuário não existe";
