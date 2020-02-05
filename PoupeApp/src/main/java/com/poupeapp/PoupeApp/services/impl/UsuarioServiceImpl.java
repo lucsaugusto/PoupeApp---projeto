@@ -40,4 +40,15 @@ public class UsuarioServiceImpl implements IUsuarioService{
 		return this.repository.findAllByNome(nome);
 	}
 
+	@Override
+	public Usuario getUsuarioByEmailAndSenha(String email, String senha) {
+		return this.repository.findUsuarioByEmailAndSenha(email, senha);
+	}
+
+	@Override
+	public Usuario autenticarUsuario(Usuario entity) {
+		Usuario usuario = this.getUsuarioByEmailAndSenha(entity.getEmail(), entity.getSenha());
+		return usuario;
+	}
+
 }

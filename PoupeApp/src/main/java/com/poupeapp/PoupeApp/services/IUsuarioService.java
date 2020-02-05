@@ -14,4 +14,9 @@ public interface IUsuarioService {
 	Usuario getById(int id);
 	
 	List<Usuario> getAllByNome(String nome);
+	
+	Usuario getUsuarioByEmailAndSenha(String email, String senha);
+
+	Usuario autenticarUsuario(Usuario usuario);
+	
 }

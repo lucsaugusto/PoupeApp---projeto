@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.poupeapp.PoupeApp.entity.Usuario;
+import com.poupeapp.PoupeApp.security.Autenticacao;
+import com.poupeapp.PoupeApp.security.Token;
 import com.poupeapp.PoupeApp.services.IUsuarioService;
 
 @RestController
@@ -13,6 +15,28 @@ import com.poupeapp.PoupeApp.services.IUsuarioService;
 public class UsuarioController {
 	@Autowired
 	private IUsuarioService service;
+	
+	
+	@PostMapping("/usuario/login")
+    public ResponseEntity<Token> loginUser(@RequestBody Usuario usuario){
+    	Usuario usuarioLogado = service.autenticarUsuario(usuario);
+    	if (usuarioLogado != null) {
+    		Token token = Autenticacao.generateToken(usuarioLogado);
+    		return ResponseEntity.ok(token);
+    	}
+    	else {
+    		return ResponseEntity.status(403).build();
+    	}
+    }
+	
+	@GetMapping("/usuario/login/{token}")
+	public ResponseEntity<Usuario> loginValid(@PathVariable String token){
+		if(Autenticacao.isValid(token)) {
+			Usuario usuario = Autenticacao.extractUser(token);
+			return ResponseEntity.ok(usuario);
+		}
+		return ResponseEntity.notFound().build();
+	}
 	
 	@PostMapping("/usuario")
 	public ResponseEntity<Usuario> post(@RequestBody Usuario entity){

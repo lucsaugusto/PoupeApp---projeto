@@ -33,8 +33,8 @@ export class PostsComponent implements OnInit {
       this.router.navigate(['/login']);
     }
     else {
-      Globals.nome = localStorage.getItem("nome");
-      this.username = Globals.nome;
+      Globals.user.nome = localStorage.getItem("nome");
+      this.username = Globals.user.nome;
       this.loginService.log.next(true);
       window.scrollTo(0, 0);
     }
@@ -63,7 +63,7 @@ export class PostsComponent implements OnInit {
       this.post.titulo = "";
       this.post.texto = "";
       this.post.linkimg = "";
-      this.post.dataInclusao = "";
+      this.post.preco = null;
       this.btnClickAll();
     });
 
