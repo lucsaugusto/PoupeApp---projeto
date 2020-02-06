@@ -9,7 +9,7 @@ import { Users } from 'src/app/model/users';
 })
 
 export class SignUpComponent implements OnInit {
-  private user: Users = new Users();
+  private user: Users = new Users(0,"","","","",null,null,null,null);
   public users: Users[];
   senhaConf: string;
   private filtro: any = /^([a-zA-zà-úÀ-Ú]|\s+)+$/;

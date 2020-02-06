@@ -15,7 +15,7 @@ import { LoginService } from 'src/app/service/login.service';
 export class AlterarUsersComponent implements OnInit {
 
   username: string;
-  user: Users = new Users();
+  user: Users = new Users(0,"","","","",null,null,null,null);
   users: Users[];
   novo: boolean = false;
   senhaConf: string;

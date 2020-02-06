@@ -13,7 +13,7 @@ import { Globals } from 'src/app/model/globals';
 })
 export class SignInComponent implements OnInit {
 
-  private login: Users = new Users();
+  private login: Users = new Users(0,"","","","",null,null,null,null);
   private _msgEnvioDados: string = null;
   private _msgErroEmail: string = null;
   private _msgCampoVazio: string = null;
