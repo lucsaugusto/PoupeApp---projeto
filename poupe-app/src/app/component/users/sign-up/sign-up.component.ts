@@ -1,6 +1,7 @@
 import { UsersService } from './../../../service/users/users.service';
 import { Component, OnInit } from '@angular/core';
 import { Users } from 'src/app/model/users';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -32,9 +33,10 @@ export class SignUpComponent implements OnInit {
   private _msgErroT: string = null;
   private _msgCampoVazio: string;
 
-  constructor(private usersService: UsersService) { }
+  constructor(private usersService: UsersService, private router: Router) { }
 
   ngOnInit() {
+    window.scrollTo(0, 0);
   }
 
   verificarForca() {
@@ -106,6 +108,8 @@ export class SignUpComponent implements OnInit {
         this._msgSenhaForte = "";
         this._msgSenhaFraca = "";
         this._msgErroEmail = "";
+        alert("Cadastro realizado com sucesso!");
+        this.router.navigate(['login']);
       },
         error => {
           console.log(`Erro cod: ${error.status}`);

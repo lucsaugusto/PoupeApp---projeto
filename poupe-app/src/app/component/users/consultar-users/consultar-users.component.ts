@@ -18,13 +18,9 @@ export class ConsultarUsersComponent implements OnInit {
 
   ngOnInit() {
     this.findAll();
-    if (!localStorage.getItem("token")) {
-      alert("Você não pode acessar está página sem estar logado")
-      this.router.navigate(['/login']);
-    }
-    else {
-      this.username = localStorage.getItem("nome");
-      this.loginService.log.next(true);
+    window.scrollTo(0, 0);
+    if(!localStorage.getItem("logado")){
+      this.router.navigate(['login']);
     }
   }
 

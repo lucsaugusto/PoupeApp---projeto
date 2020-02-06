@@ -13,7 +13,7 @@ import { LoginService } from 'src/app/service/login.service';
 export class AlterarPostsComponent implements OnInit {
   //Atributos
   username: string;
-  user: Users;
+  user: Users= new Users(0,"","","","",null,null,null,null);
   posts: Array<Posts> = new Array<Posts>();
   post: Posts = new Posts();
   idPostagem: number;
@@ -26,14 +26,8 @@ export class AlterarPostsComponent implements OnInit {
   ngOnInit() {
     let id: number = this.route.snapshot.params["id"];
     this.findById(id);
-
-    if (!localStorage.getItem("token")) {
-      alert("Você não pode acessar está página sem estar logado")
-      this.router.navigate(['/login']);
-    }
-    else {
-      this.username = localStorage.getItem("nome");
-      this.loginService.log.next(true);
+    if(!localStorage.getItem("logado")){
+      this.router.navigate(['login']);
     }
   }
 

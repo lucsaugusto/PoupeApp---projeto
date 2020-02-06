@@ -12,10 +12,6 @@ export class AboutUsComponent implements OnInit {
   constructor(private router: Router, private loginService: LoginService) { }
 
   ngOnInit() {
-    if (localStorage.getItem("token")) {
-      this.username = localStorage.getItem("nome");
-      this.loginService.log.next(true);
-      window.scrollTo(0, 0);
-    }
+    window.scrollTo(0, 0);
   }
 }

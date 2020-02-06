@@ -13,18 +13,16 @@ import { Users } from 'src/app/model/users';
 export class HomeComponent implements OnInit {
   user: Users;
   username: string;
+  atualizado: boolean = true;
   constructor(private router: Router, private loginService: LoginService) { }
 
   ngOnInit() {
-    this.loginService.loginInfo(localStorage.getItem("token")).subscribe(
-      (res: Users) => {
-        Globals.user = res;
-        this.user = res;
-        this.username = res.nome;
-      },
-      (err) => {
-        this.user = null;
-      }
-    );
+    if(!localStorage.getItem("logado")){
+      this.router.navigate(['login']);
+    }
+    // else {
+    //   this.username = Globals.user.nome;
+    //   alert("nome: " + Globals.user.nome)
+    // }
   }
 }

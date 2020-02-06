@@ -25,13 +25,9 @@ export class HelpComponent implements OnInit {
   constructor(private router: Router, private loginService: LoginService) { }
 
   ngOnInit() {
-    if (localStorage.getItem("token")) {
-      this.username = localStorage.getItem("nome");
-      this.loginService.log.next(true);
-      window.scrollTo(0, 0);
-    }
-    
+    window.scrollTo(0, 0);
   }
+  
   validacao() {
     if (this.nome == "" || this.email == "" || this.tel == null || this.msg == "") {
       this._msgCampoVazio = "Atenção! Preencha Todos os campos";

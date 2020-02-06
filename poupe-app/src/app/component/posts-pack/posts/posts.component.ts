@@ -29,15 +29,10 @@ export class PostsComponent implements OnInit {
   ngOnInit() {
     this.btnClickAll();
 
-    if (!localStorage.getItem("token")) {
-      alert("Você não pode acessar está página sem estar logado")
-      this.router.navigate(['/login']);
+    if(!localStorage.getItem("logado")){
+      this.router.navigate(['login']);
     }
-    else {
-      this.username = Globals.user.nome;
-      this.loginService.log.next(true);
-      window.scrollTo(0, 0);
-    }
+    window.scrollTo(0, 0);
   }
 
   //Começa a minha aplicação
@@ -62,7 +57,7 @@ export class PostsComponent implements OnInit {
     alert(this.valor)
     this.user.idUsuario = <number>this.valor;
     this.post.usuario = this.user;
-
+    this.post.idPostagem = null;
     this.postService.insert(this.post).subscribe((postOut: Posts) => {
       this.post = postOut;
       this.post.titulo = "";
@@ -73,11 +68,5 @@ export class PostsComponent implements OnInit {
       this.btnClickAll();
     });
 
-  }
-  editarPost() {
-    this.postService.update(this.post).subscribe((postOut: Posts) => {
-      this.post = postOut;
-      this.router.navigate(['feed']);
-    });
   }
 }
